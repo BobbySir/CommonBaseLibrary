@@ -1,0 +1,480 @@
+<resources>
+    <string name="app_name">CalendarRemindDemo</string>
+    <string name="login_register">登录注册</string>
+    <string name="hint_input_mobile_number">请输入您的手机号码</string>
+    <string name="hint_input_identifying_code">请输入验证码</string>
+    <string name="send_code">发送验证码</string>
+    <string name="pwd_login">密码登录</string>
+    <string name="login">登录</string>
+    <string name="agreement">我已阅读并且同意</string>
+    <string name="server">《服务授权协议》</string>
+    <string name="privacy">《隐私和授权协议》</string>
+    <string name="hint_check_agreement">请先勾选同意协议</string>
+    <string name="hint_input_pwd">请输入密码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="login_by_code">验证码登录</string>
+    <string name="verification_pwd">请输入6-16位的密码</string>
+    <string name="hint_pwd_confirm">请确认密码</string>
+    <string name="hint_pwd_new_confirm">请确认新密码</string>
+    <string name="confirm">确认</string>
+    <string name="hint_check_new_pwd">新密码不一致，请确认后重新输入</string>
+    <string name="hint_forget_pwd_success">找回密码成功</string>
+    <string name="hint_confirm_origin_pwd">请确认原密码</string>
+    <string name="hint_input_new_pwd">请输入新密码</string>
+    <string name="pwd_update">修改密码</string>
+    <string name="hint_input_origin_pwd">请输入原密码</string>
+    <string name="hint_again_confirm_pwd">请再次确认新密码</string>
+    <string name="pwd_update_success">修改密码成功</string>
+    <string name="set_pwd">设置密码</string>
+    <string name="set_pwd_success">设置密码成功</string>
+    <string name="hint_check_pwd">密码不一致，请确认后重新输入</string>
+    <string name="exit_login_success">退出登录成功</string>
+
+    <!-- 首页 -->
+    <string name="find_new_version">发现新版本</string>
+    <string name="upgrade_now">立即升级</string>
+    <string name="hint_gps">您已经设置GPS为“关闭”，请前往启用GPS</string>
+    <string name="tip">提示</string>
+    <string name="hint_insufficient_score">当前信用评分不足，请选择其他的可借周期及金额</string>
+    <string name="notice">公告：</string>
+    <string name="loan_term">借款周期</string>
+    <string name="daily_rate">日利率</string>
+    <string name="rateFee_detail">利息费用</string>
+    <string name="repayment_amount">还款金额</string>
+    <string name="delay">展期</string>
+    <string name="delay_day">展期天数</string>
+    <string name="please_select">请选择</string>
+    <string name="apply_now">立即申请</string>
+    <string name="hint_apply_later">您已经申请过贷款，请当前贷款结清后再申请</string>
+    <string name="default_checked">默认</string>
+    <string name="default_set">设置默认</string>
+    <string name="loan_info_confirmation">贷款信息确认</string>
+    <string name="day">天</string>
+    <string name="replace">更换 ></string>
+    <string name="loan_amount">借款金额</string>
+    <string name="service_cost">服务费用</string>
+    <string name="amount_received">到账金额</string>
+    <string name="expire_repayment">到期应还</string>
+    <string name="expire_time">到期时间</string>
+    <string name="submit_confirm">确定提交</string>
+    <string name="submit_success">提交成功</string>
+    <string name="loan_apply_success">贷款申请已提交成功!</string>
+    <string name="notice_regard">近期请留意电话及短信通知，我们会有客服人员联系您。</string>
+    <string name="loan_progress_check">查看贷款进度</string>
+    <string name="loan_not">亲，你还没有贷款哦~</string>
+    <string name="loan_go">去借钱</string>
+    <string name="loan_time">贷款时间</string>
+    <string name="loan_money">贷款金额</string>
+    <string name="order_details">订单详情</string>
+    <string name="repayment">还款</string>
+    <string name="repayment_details">还款详情</string>
+    <string name="repayment_confirm">确认还款</string>
+    <string name="repayment_type">还款方式：</string>
+    <string name="repayment_virtual_pay">还款方式：STP</string>
+
+
+    <string name="bank_name_fomat"><![CDATA[银行名称：<font>%1$s</font>]]></string>
+    <string name="bank_card_fomat"><![CDATA[银行卡号：<font>%1$s</font>]]></string>
+    <string name="amount_due">应还金额</string>
+    <string name="amount_this_repayment">本次还款金额</string>
+    <string name="bank_card">银行卡号</string>
+    <string name="bank_account_name">银行账户名称</string>
+    <string name="bank_name">银行名称</string>
+    <string name="bank_branch_name">银行支行名称</string>
+    <string name="hint_input_bank_branch_name">请输入银行支行名称</string>
+    <string name="bank_package">银行卡包</string>
+    <string name="amount_payment">支付金额</string>
+    <string name="tip_transfer_info">转账须知：1.转账时，备注栏必须填写借款人预留的银行联系电话；  2.进行银行转帐时，有必要核实转帐信息是否正确，如果转帐有误，公司将不承担任何责任。</string>
+    <string name="amount_remaining_payable">剩余应还金额</string>
+    <string name="delay_confirm">确认展期</string>
+
+    <!-- 个人资料 -->
+    <string name="personal_data">个人资料</string>
+    <string name="identity_auth">身份认证</string>
+    <string name="personal_info">个人信息</string>
+    <string name="work_info">工作信息</string>
+    <string name="emergency_contact">紧急联系人</string>
+    <string name="operator_auth">运营商授权</string>
+    <string name="update_to">去更新 ></string>
+    <string name="add_to">去补充</string>
+    <string name="sel_to">去查看 ></string>
+    <string name="finish">完成</string>
+    <string name="id_card">身份证号码</string>
+    <string name="hint_input_id_card">请输入身份证</string>
+    <string name="name">姓名</string>
+    <string name="hint_input_name">请输入姓名</string>
+    <string name="sex">性别</string>
+    <string name="hint_input_sex">请输入您的性别</string>
+    <string name="hint_select_sex">请选择您的性别</string>
+    <string name="birthday">生日</string>
+    <string name="hint_input_birthday">请输入你的出生日期</string>
+    <string name="hint_select_birthday">请选择你的出生日期</string>
+    <string name="upload_front_card">上传身份证正面</string>
+    <string name="upload_reverse_card">身份证反面</string>
+    <string name="upload_hold_card">手持身份证</string>
+    <string name="male">H</string>
+    <string name="female">M</string>
+    <string name="upload_success">上传成功</string>
+    <string name="hint_upload_front_card">请上传身份证正面照片</string>
+    <string name="hint_upload_reverse_card">请上传身份证反面照片</string>
+    <string name="hint_upload_hold_card">请上传手持身份证照片</string>
+    <string name="loan_purpose">贷款用途</string>
+    <string name="address_home">住宅地址</string>
+    <string name="marital_status">婚姻状况</string>
+    <string name="childs">子女个数</string>
+    <string name="ducation">学历</string>
+    <string name="email">邮箱：</string>
+    <string name="e_email">电子邮箱</string>
+    <string name="hint_input_email">请输入你的电子邮箱</string>
+    <string name="hint_input_whatsApp">请输入你的whatsApp</string>
+    <string name="hint_input_zalo">请输入你的Zalo</string>
+    <string name="hint_input_facebook">请输入你的Facebook链接</string>
+    <string name="address_details">详细地址：</string>
+    <string name="hint_address_to_five">详细地址不能少于5位</string>
+    <string name="hint_select_province">请选择省</string>
+    <string name="hint_select_city">请选择市</string>
+    <string name="hint_select_area">请选择区</string>
+    <string name="hint_select_region">请选择所在地区</string>
+    <string name="hint_input_address_details">详细地址：如道路/门牌号/小区/楼栋号等</string>
+    <string name="hint_select_loan_purpose">请选择贷款用途</string>
+    <string name="hint_select_address_home">请选择住宅地址</string>
+    <string name="hint_select_marital_status">请选择婚姻状况</string>
+    <string name="hint_select_chidls">请选择子女个数</string>
+    <string name="hint_select_ducation">请选择学历</string>
+    <string name="input_zalo_facebook">请输入WhatsApp或Facebook链接</string>
+    <!--    <string name="input_zalo_facebook">Mời nhập Zalo hoặc Facebook</string>-->
+    <string name="corporate_name">公司名称</string>
+    <string name="hint_input_corporate_name">请输入公司名称</string>
+    <string name="industry_type">行业类型</string>
+    <string name="corporate_tel">公司电话</string>
+    <string name="hint_input_corporate_tel">请输入公司电话</string>
+    <string name="corporate_address">公司地址</string>
+    <string name="length_service">在职时长</string>
+    <string name="choose_identity">选择身份</string>
+    <string name="monthly_income">每月净收入</string>
+    <string name="hint_input_monthly_income">请输入月净收入</string>
+    <string name="pay_day">发薪日</string>
+    <string name="upload_data">选择以下任意一项资料上传：</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="hint_input_industry_type">请选择行业类型</string>
+    <string name="hint_select_corporate_name">请选择公司地址</string>
+    <string name="hint_select_length_service">请选择在职时长</string>
+    <string name="hint_select_identity">请选择身份</string>
+    <string name="hint_select_pay_day">请选择发薪日</string>
+    <string name="hint_select_certification_type">请选择认证类型</string>
+    <string name="hint_select_certification_photo">请上传凭证照片</string>
+    <string name="contact_info">联系人信息</string>
+    <string name="contact_one">联系人1</string>
+    <string name="contact_relation">与我的关系</string>
+    <string name="contact_tel">联系电话</string>
+    <string name="contact_tel1">联系电话：</string>
+    <string name="contact_two">联系人2</string>
+    <string name="contact_list">通讯录列表</string>
+    <string name="hint_select_emergency_contact">请选择紧急联系人</string>
+    <string name="hint_select_emergency_contact_relation">请选择紧急联系人关系</string>
+    <string name="operator_cert">运营商认证</string>
+    <string name="hine_select_operator">请选择要授权的运营商</string>
+    <string name="get_autho_code">获取确认码已完成授权</string>
+    <string name="next">下一步</string>
+    <string name="hint_first_send_code">请先发送验证码</string>
+    <string name="again_get_autho_code">请再次获取确认码已完成授权</string>
+    <string name="add_bank_card">添加收款银行卡</string>
+    <string name="receiving_bank">收款银行</string>
+    <string name="hint_select_receiving_bank">请选择收款银行</string>
+    <string name="card_holder">持卡人</string>
+    <string name="bank_account">银行账号</string>
+    <string name="hint_input_bank_account">请输入银行账号</string>
+    <string name="bank_province">银行所在省份</string>
+    <string name="hint_select_bank_province">请选择银行所在省份</string>
+    <string name="bank_set_default_receiving_bank">设置为默认收款银行卡</string>
+    <string name="bank_my_receiving_bank_card">我的收款银行卡</string>
+    <string name="unbind">解除绑定</string>
+    <string name="hint_least_one_card">卡包中至少有一张收款银行卡</string>
+    <string name="add">增加</string>
+    <string name="supplementary_information">补充信息</string>
+    <string name="hint_upload_income">请上传最新收入证明</string>
+    <string name="hint_upload_consume">请上传最新消费账单</string>
+    <string name="upload_income">收入证明上传</string>
+    <string name="hint_input_brnk_card">请输入银行卡号</string>
+    <string name="upload_consume">消费账单上传</string>
+    <string name="submit">提交</string>
+    <string name="loan_my">我的贷款</string>
+    <string name="offline_pay">便捷线下还款</string>
+    <string name="offline_transfer">便捷线下转账</string>
+    <string name="offline_transfer_type">便捷线下转账方式</string>
+    <string name="set">设置</string>
+    <string name="exit_account">退出账户</string>
+    <string name="exit_current_account">退出当前账户</string>
+    <string name="hint_exit_account">退出账号后，将无法接收消息通知和公告 确认退出？</string>
+    <string name="problem_feedback">问题反馈</string>
+    <string name="problem_feedback_len">请输入至少于5位数的问题反馈</string>
+    <string name="about_us">关于我们</string>
+    <string name="hint_submit_problem">请描述问题后再提交</string>
+    <string name="problem_describe">请描述您遇到的问题，如某个功能无法正常使用、页面卡顿/闪退、或其他 借款问题（5个字以上）</string>
+    <string name="current_version">当前版本：</string>
+    <string name="data_loss">糟糕数据丢失.</string>
+    <string name="reload">点击当前页面重新加载试试!</string>
+    <string name="load_fail">页面加载失败</string>
+    <string name="loading">数据加载中...</string>
+    <string name="load_after_networking">连网后点击当前页面重新加载试试!</string>
+    <string name="date">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="total">共</string>
+
+
+    <string name="take_camera">拍照上传</string>
+    <string name="take_album">本地相册</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="warm_hint">温馨提示</string>
+    <string name="warm_hint1">温馨提示：</string>
+    <string name="to_setting">去设置</string>
+
+    <string name="apply_permission">权限申请</string>
+    <string name="need_all_permission">App需要获取拍照、存储、电话、短信、通讯录、位置等权限请开启</string>
+    <string name="need_location_permission">App需要获取位置权限请开启</string>
+    <string name="need_camera_stogafe_permission">App需要获取拍照，存储权限，请开启</string>
+    <string name="need_camera_permission">App此功能需要拍照权限，请开启</string>
+    <string name="need_stogafe_permission">App此功能需要获取读取存储权限，请开启</string>
+    <string name="need_contact_permission">App需要获取通讯录权限，请开启</string>
+    <string name="need_call_phone_permission">App此功能需要获取拨打电话权限，请开启</string>
+    <string name="need_phone_status_permission">App需要获取设备状态权限，请开启</string>
+    <string name="please_select_emergency_contact">请选择紧急联系人</string>
+    <string name="please_select_relation">请选择紧急联系人关系</string>
+
+    <!-- 首页产品详情 -->
+    <!-- 还款金额 -->
+    <string name="home_repayment_amount"><![CDATA[<font>%1$s</font>]]></string>
+    <!-- 借款金额 -->
+    <string name="home_loan_amount"><![CDATA[<font>%1$s</font>]]></string>
+    <!-- 利息费用 -->
+    <string name="home_rates"><![CDATA[<font>%1$s</font>]]></string>
+    <!-- 服务费用 -->
+    <string name="home_service_cost"><![CDATA[<font>%1$s</font>]]></string>
+    <!-- 到账金额 -->
+    <string name="home_amount_received"><![CDATA[<font>%1$s</font>]]></string>
+    <!-- 到期应还 -->
+    <string name="home_expire_repayment"><![CDATA[<font>%1$s</font>]]></string>
+
+
+    <!-- 订单详情  -->
+    <string name="order_amount_due"><![CDATA[应还金额：<font>%1$s</font>]]></string>
+    <string name="order_loan_term"><![CDATA[借款周期：<font>%1$s天</font>]]></string>
+    <string name="order_approved_amoun"><![CDATA[通过金额：<font>%1$s</font>]]></string>
+    <string name="order_money_rates"><![CDATA[利息费用：<font>%1$s</font>]]></string>
+    <string name="order_last_pay_time"><![CDATA[最后还款日：<font>%1$s</font>]]></string>
+    <string name="order_actualTotal"><![CDATA[已还总金额：<font>%1$s</font>]]></string>
+    <string name="order_notTotal"><![CDATA[待还总金额：<font>%1$s</font>]]></string>
+    <string name="order_overdue_day"><![CDATA[逾期天数：<font>%1$s</font>]]></string>
+    <string name="order_overdue_interest"><![CDATA[逾期罚息：<font>%1$s</font>]]></string>
+
+
+    <!-- 展期详情  -->
+    <string name="delay_already_repayment"><![CDATA[已还金额：<font>%1$s</font>]]></string>
+    <string name="delay_amount_remaining_payable"><![CDATA[剩余应还金额：<font>%1$s</font>]]></string>
+    <string name="delay_repayment_date"><![CDATA[展期后还款日：<font>%1$s</font>]]></string>
+    <string name="delay_rate"><![CDATA[展期服务费：<font>%1$s</font>]]></string>
+    <string name="delay_checked_hint">请选择展期天数</string>
+    <string name="dilay_cancal_hint">取消STP支付后，将无法进行展期手续费的支付</string>
+    <string name="repay_cancel_hint">取消STP支付后，将无法进行还款支付,可能会造成逾期</string>
+
+    <string name="home">首页</string>
+    <string name="order">订单</string>
+    <string name="mine">我的 </string>
+    <string name="exit_application">再按一次退出应用</string>
+
+
+    <string name="server_unconnect">服务器无法连接，请检查网络</string>
+    <string name="connect_time_out">网络连接超时，请检查网络</string>
+    <string name="data_parsing_failed">数据解析失败</string>
+    <string name="data_loading">正在加载中...</string>
+
+
+    <string name="version_downloading">%1$s下载中...</string>
+    <string name="download_percent">已完成  %1$s</string>
+    <string name="total_size">共%1$.1fM</string>
+    <string name="loan_day">%1$s天</string>
+    <string name="loan_home_day">%1$s天</string>
+    <string name="delay_service_rate">展期服务费</string>
+    <string name="cancel_pay">取消支付</string>
+    <string name="symbol"></string>
+
+    <string name="incorrect_mailbox_format">邮箱格式不正确</string>
+    <string name="format_phone_invalid">手机号格式有误</string>
+
+    <string name="hint_input_idcard_error">请输入正确的身份证号码</string>
+    <string name="hint_input_idcard_info_error">身份信息填写有误</string>
+    <string name="other_operators_title">其他运营商</string>
+    <string name="other_operators">其他运营商，</string>
+    <string name="jump">跳过</string>
+    <string name="warning_operators">运营商认证注意事项</string>
+    <string name="hint_checked_operators">
+        <![CDATA[<font>
+         1.每次验证码有效时间在1分钟内；<br>
+         2.运营商认证页面，两次验证码间隔不能超过1分钟；<br>
+         3.当发生"第二次验证码失效"则返回上一步,再重新进行运营商认证；<br>
+         4.当前手机号码若没有在 %1$s APP上登录过时，请先登录运营商APP；
+        </font>]]>
+    </string>
+    <string name="hint_jump_operators">当前运营商暂时无法认证，请跳过认证环节！</string>
+    <string name="confirm_identity">请确认填写的信息是否有误，提交后将无法修改！</string>
+
+
+    <string name="account_type">帐户类型</string>
+    <string name="hint_select_account_type">请选择帐户类型</string>
+    <string name="debit_card">借记卡</string>
+    <string name="electronic_card">电子卡</string>
+    <string name="rfc_number">税号</string>
+    <string name="hint_rfc_number">请输入税号</string>
+    <string name="rfc_code">税卡验证编码</string>
+    <string name="hint_rfc_code">请输入证件中的idCIF</string>
+    <string name="rfc_info_title">税卡信息</string>
+    <string name="OXXOpay">OXXO支付</string>
+    <string name="hint_OXXOpay">确定取消OXXO支付吗？</string>
+
+    <string name="voter_id">选民编号</string>
+    <string name="hint_voter_id">请输入选民编号</string>
+
+    <!-- 活体检测 -->
+    <string name="hint_has_face_and_hold_still">请不要动</string>
+    <string name="hint_no_face">将脸放在框架内</string>
+    <string name="hint_face_not_valid">请远离屏幕</string>
+    <string name="silent_detect">检测中</string>
+    <string name="download_error">许可证下载失败</string>
+    <string name="start_download">下载中</string>
+    <string name="try_again">重试</string>
+    <string name="result_detect_success">检测成功</string>
+    <string name="result_detect_fail">检测失败</string>
+    <string name="permission_tips">需要相机权限</string>
+    <string name="note_blink">眨眨眼</string>
+    <string name="note_mouth">张嘴几次</string>
+    <string name="note_nod">头从上到下移动</string>
+    <string name="note_yaw">从左到右转头</string>
+    <string name="detect_timeout">检测超时</string>
+    <string name="biopsy_title">活体检测</string>
+    <string name="hint_biopsy_title">请先进行活体检测</string>
+    <string name="hint_tips_name_empty">输入名字时请注意字之间要有空格</string>
+
+    <string name="hint_correct_card">请输入正确的卡号</string>
+    <string name="electronic_card_number">电子卡号</string>
+    <string name="hint_electronic_card">请输入电子卡号</string>
+    <string name="copy_card">复制卡号</string>
+    <string name="hint_copy_card">卡号已复制至粘贴板</string>
+    <string name="copy_bank_card">复制账户</string>
+    <string name="hint_copy_bank_card">内容已复制至粘贴板</string>
+    <string name="hint_new_order_tips">您有一笔待还订单，</string>
+    <string name="click_sel">点击</string>
+    <string name="hint_new_order_cause">这里还款</string>
+    <string name="format_error_curp">身份证格式错误</string>
+    <string name="format_error_clave_elector">选民编号格式错误</string>
+    <string name="format_error_rfc">税号格式错误</string>
+    <string name="format_error_idcif">证件编码格式错误</string>
+    <string name="hint_bank_selected_tips">请注意谨慎选择银行卡类型，以避免因银行卡信息填写错误导致无法收到借款。</string>
+
+    <string name="STPpay">STP支付</string>
+    <string name="phone_number">手机号码</string>
+    <string name="verification_code">验证码</string>
+    <string name="old_pwd">原密码</string>
+    <string name="new_pwd">新密码</string>
+    <string name="confirm_new_pwd">确认新密码</string>
+    <string name="my_order">我的订单</string>
+    <string name="pass_money">通过金额</string>
+    <string name="last_pay_time">最后还款日</string>
+    <string name="amount_paid_money">已还金额</string>
+    <string name="overdue_day">逾期天数</string>
+    <string name="overdue_interest">逾期罚息</string>
+    <string name="delay_after">展期后还款日</string>
+
+
+    <string name="order_number">订单编号</string>
+    <string name="password">密码</string>
+    <string name="update">修改</string>
+    <string name="bank_type_toast">您当前输入的银行账号疑似为CLABE，但您选择的账户类型为借记卡，请确认无误再提交！</string>
+    <string name="bank_type">银行卡类型</string>
+    <string name="toast_add_back_text">请确认信息无误后再点击确认按钮，避免因银行卡信息填写错误导致无法收到借款</string>
+    <string name="add_bank_warn_one">请绑定你的银行卡是的我们可以存入。</string>
+    <string name="add_bank_warn_two">银行卡的信息将仅用于存储。</string>
+    <string name="add_bank_warn_three">请绑定你的银行卡是的我们可以存入。&#x000A; 银行卡的信息将仅用于存储。</string>
+    <string name="safety_okr_dito">
+       <![CDATA[<font>
+       尊敬的用户， %1$s 告诉您这一部分的个人信息是被保护的。
+       </font>]]>
+   </string>
+    <string name="identity_ine_ife">添加你的INE/IFE 并（立即）增加额度</string>
+
+    <string name="welcome_toast_title">为了合作变得更好，我们需要收集以下信息。我们将确保此信息，不要向任何其他个人或组织披露。</string>
+    <string name="welcome_toast_contacts_title">联系人</string>
+    <string name="welcome_toast_contacts_content">阅读您的联系人</string>
+    <string name="welcome_toast_location_title">位置信息</string>
+    <string name="welcome_toast_location_content1">近似位置（基于网络）</string>
+    <string name="welcome_toast_location_content2">精确的位置（GPS和基于网络）</string>
+    <string name="welcome_toast_phone_title">电话</string>
+    <string name="welcome_toast_phone_content1">直接致电电话号码</string>
+    <string name="welcome_toast_phone_content2">读取电话状态和身份</string>
+    <string name="welcome_toast_photo_file_title">照片/文件</string>
+    <string name="welcome_toast_photo_file_content1">访问USB存储文件系统</string>
+    <string name="welcome_toast_photo_file_content2">阅读USB存储的内容</string>
+    <string name="welcome_toast_photo_file_content3">修改或删除USB存储的内容</string>
+    <string name="welcome_toast_storage_title">存储</string>
+    <string name="welcome_toast_storage_content">阅读USB存储的内容</string>
+    <string name="welcome_toast_storage_content2">修改或删除USB存储的内容</string>
+    <string name="welcome_toast_pictures_title">图片和视频</string>
+    <string name="welcome_toast_pictures_content">拍照和视频</string>
+    <string name="welcome_toast_wifi_title">Wi-Fi连接</string>
+    <string name="welcome_toast_wifi_content">查看Wi-Fi连接</string>
+    <string name="welcome_toast_identity_title">状态和身份</string>
+    <string name="welcome_toast_identity_content">读取电话状态和身份</string>
+    <string name="welcome_toast_other_title">其他</string>
+    <string name="welcome_toast_other_content1">查看网络连接</string>
+    <string name="welcome_toast_other_content2">与蓝牙设备配对</string>
+    <string name="welcome_toast_other_content3">完整的网络访问</string>
+    <string name="welcome_toast_other_content4">防止设备睡觉</string>
+
+    <string name="view_product_toast1">尊敬的vip客户，您不符合当前产品的申请条件，推荐您选择其他周期或自行切换其他借款周期</string>
+    <string name="view_product_toast2">选择其他</string>
+    <string name="view_product_toast3">接受推荐</string>
+    <string name="confirm_pwd">确认密码</string>
+    <string name="common_problem">常见问题</string>
+
+    <string name="no_sms">收不到短信?</string>
+    <string name="voice_sms">获取语音验证码</string>
+    <string name="voice">语音验证码</string>
+    <string name="voice_text">我们将以电话的方式告知你验证码，请注意接听</string>
+    <string name="voice_ok">知道了</string>
+    <string name="voice_later">请稍后再试</string>
+
+    <string name="father">父姓</string>
+    <string name="mother">母姓</string>
+    <string name="pay_frequency">发薪频率</string>
+    <string name="one_payday">第一个发薪日</string>
+    <string name="two_payday">第二个发薪日</string>
+    <string name="three_payday">第三个发薪日</string>
+    <string name="four_payday">第四个发薪日</string>
+    <string name="weekly_pay">周薪</string>
+    <string name="Half_monthly_salary">半月薪</string>
+    <string name="monthly_salary">月薪</string>
+    <string name="per_visit">每次净收入</string>
+
+    <string name="hint_father">请输入父姓</string>
+    <string name="hint_mother">请输入母姓</string>
+    <string name="hint_father_text">输入父姓时请注意字之间不要有空格</string>
+    <string name="hint_mother_text">输入母姓时请注意字之间不要有空格</string>
+    <string name="hint_frequency">请选择发薪频率</string>
+    <string name="hint_one_money">请选择第一个发薪日</string>
+    <string name="hint_two_money">请选择第二个发薪日</string>
+    <string name="hint_three_money">请选择第三个发薪日</string>
+    <string name="hint_four_money">请选择第四个发薪日</string>
+    <string name="hint_money_text">多个发薪日不可重复</string>
+    <string name="hint_per_money_text">请输入每次净收入</string>
+
+    <string name="transferencia">转账须知:</string>
+    <string name="app_update_content">版本低，需要升级到最新版本</string>
+    <string name="go_update">立即升级</string>
+
+    <string name="hint_input_debit_card_bank_account">请输入16位银行账号</string>
+    <string name="hint_input_curp_bank_account">请输入18位电子卡号</string>
+    <string name="hint_input_error_curp_card">您当前输入的银行账号有误，请核对无误后提交！</string>
+</resources>
