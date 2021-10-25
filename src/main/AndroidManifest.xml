@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.basephonedatalibrary">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 访问手机硬件信息 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 读取Wifi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!--拍照-->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- 写外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 读外部存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 访问手机联系人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 8.0请求安装外部包 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- 拨打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <!-- 读取电话 -->
+    <!--    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+        <uses-permission android:name="android.permission.WRITE_CALL_LOG" />-->
+    <!-- 读取短信内容 -->
+    <!--<uses-permission android:name="android.permission.READ_SMS" />-->
+
+    <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+</manifest>

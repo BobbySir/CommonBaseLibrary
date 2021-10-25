@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 协议 -->
+    <style name="CommonAgreementCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/cl_84</item>
+        <item name="colorControlActivated">@color/cl_00c2c1</item>
+    </style>
+
+
+    <style name="MimeLineLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MimeTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/dp26</item>
+        <item name="android:paddingBottom">@dimen/dp26</item>
+        <item name="android:drawablePadding">@dimen/dp7</item>
+        <item name="android:textSize">@dimen/dp13</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">@dimen/dp7</item>
+    </style>
+
+
+    <style name="PersonalLineLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+    <style name="PersonalInfoTopView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp10</item>
+        <item name="android:paddingTop">@dimen/dp21</item>
+        <item name="android:paddingBottom">@dimen/dp13</item>
+        <item name="android:drawablePadding">@dimen/dp7</item>
+        <item name="android:textSize">@dimen/dp13</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="PersonalInfoBottomView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp10</item>
+        <item name="android:paddingBottom">@dimen/dp11</item>
+        <item name="android:textSize">@dimen/dp13</item>
+        <item name="android:textColor">@color/cl_00c2c1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="IdentityEditTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp10</item>
+        <item name="android:paddingBottom">@dimen/dp11</item>
+        <item name="android:textSize">@dimen/dp13</item>
+        <item name="android:textColorHint">@color/cl_00c2c140</item>
+        <item name="android:textColor">@color/cl_00c2c1</item>
+        <item name="android:background">@null</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:maxLength">30</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+
+
+
+
+    <style name="BankRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/cl_616161</item>
+        <item name="colorControlActivated">@color/cl_00c2c1</item>
+    </style>
+
+    <!-- 请求加载圈 -->
+    <style name="MyDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- 自定义仿IOS的AlertDialog的样式 -->
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!-- wind悬浮框的主题-->
+    <style name="myTransparent" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="ListCenterDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <!-- 背景设置为非透明边缘会出现阴影效果 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- 退出APP弹窗动画 -->
+  <!--  <style name="dialog_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>-->
+
+    <!--    通用分割线-->
+    <style name="CommonDivisionLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/view_line</item>
+        <item name="android:background">@color/color_EEEEEE</item>
+    </style>
+</resources>
+
