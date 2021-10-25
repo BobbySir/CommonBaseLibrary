@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TabMainActivity">
+
+    <Button
+        android:id="@+id/bt_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="相册"
+        android:background="@color/color_C7C7C7"
+        />
+    <Button
+        android:id="@+id/bt_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所有APP安装信息"
+        android:background="@color/color_C7C7C7"
+        />
+    <Button
+        android:id="@+id/bt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所有短信信息"
+        android:background="@color/color_C7C7C7"
+        />
+    <Button
+        android:id="@+id/bt_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所有联系人信息"
+        android:background="@color/color_C7C7C7"
+        />
+
+    <Button
+        android:id="@+id/bt_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="所有设备信息"
+        android:background="@color/color_C7C7C7"
+        />
+
+    <Button
+        android:id="@+id/bt_calen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="日历"
+        android:background="@color/color_C7C7C7"
+        />
+</LinearLayout>

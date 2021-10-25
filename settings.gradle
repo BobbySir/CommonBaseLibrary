@@ -1,0 +1,3 @@
+include ':BasePhoneDataLibrary'
+include ':app'
+rootProject.name = "CalendarRemindDemo"
