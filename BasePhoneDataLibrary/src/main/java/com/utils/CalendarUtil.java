@@ -48,7 +48,7 @@ public class CalendarUtil {
             location = eventCursor.getString(eventCursor.getColumnIndex("eventLocation"));
             String aa =  eventCursor.getString(eventCursor.getColumnIndex("dtstart"));
             count++;
-            LogUtils.e("TabMainActivity" + aa  +"  id== " + eventId   +"____" + eventCursor.getString(eventCursor.getColumnIndex("calendar_id")));
+            //LogUtils.e("TabMainActivity" + aa  +"  id== " + eventId   +"____" + eventCursor.getString(eventCursor.getColumnIndex("calendar_id")));
 
             //如果开始时间和结束时间>0的话
             if(eventCursor.getLong(eventCursor.getColumnIndex("dtstart")) > 0 && eventCursor.getLong(eventCursor.getColumnIndex("dtend")) > 0) {
@@ -56,7 +56,7 @@ public class CalendarUtil {
                 endTime = timeStamp2Date(eventCursor.getLong(eventCursor.getColumnIndex("dtend")));
 
                 week = ""+ (getWeek(startTime));
-                CalenderDataBean item = new CalenderDataBean(eventTitle, startTime, endTime,description, location,week);
+                CalenderDataBean item = new CalenderDataBean(eventId,eventTitle, startTime, endTime,description, location,week);
 
                 arr.add(item);
             }

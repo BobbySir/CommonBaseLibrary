@@ -20,7 +20,8 @@ public class CalenderDataBean {
     //指定时间时间星期几
     public String week = "";
 
-    public CalenderDataBean(String eventTitle, String startTime, String endTime, String description, String location, String week) {
+    public CalenderDataBean(String eventId,String eventTitle, String startTime, String endTime, String description, String location, String week) {
+        this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -32,7 +33,8 @@ public class CalenderDataBean {
     @Override
     public String toString() {
         return "CalenderDataBean{" +
-                "eventTitle='" + eventTitle + '\'' +
+                "eventId='" + eventId + '\'' +
+                ", eventTitle='" + eventTitle + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", description='" + description + '\'' +

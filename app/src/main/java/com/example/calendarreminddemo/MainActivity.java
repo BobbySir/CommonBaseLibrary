@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initCalendar(){
         //检查日历权限
-        if(PermissionUtils.hasPermission(this, new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR})){
+        if(PermissionUtils.hasPermission(this, new String[]{Manifest.permission.READ_CALENDAR})){
 //            CalendarReminderUtils.addCalendarEvent(this, titlte, description, 0,0,8);
             List<CalenderDataBean> beanList = CalendarUtil.getCalenderDataList(this);
             LogUtils.e("有多少日程：" + beanList.size());
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //                LogUtils.e("日程：" );
 //            }
         }else{
-            PermissionUtils.requestPermission(this, new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR}, 101);
+            PermissionUtils.requestPermission(this, new String[]{Manifest.permission.READ_CALENDAR}, 101);
         }
     }
 }

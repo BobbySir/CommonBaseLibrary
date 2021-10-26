@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.basephonedatalibrary">
 
+    <!-- 读取日历权限 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- 访问手机硬件信息 -->
+ <!-- 访问手机硬件信息 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 读取Wifi状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
