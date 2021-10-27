@@ -227,13 +227,14 @@
 
     <string name="take_camera">拍照上传</string>
     <string name="take_album">本地相册</string>
-    <string name="cancel">取消</string>
-    <string name="sure">确定</string>
+    <string name="cancel">取消 (cancel)</string>
+    <string name="sure">确定（sure）</string>
     <string name="warm_hint">温馨提示</string>
     <string name="warm_hint1">温馨提示：</string>
-    <string name="to_setting">去设置</string>
+    <string name="to_setting">去设置 (Go to set)</string>
 
-    <string name="apply_permission">权限申请</string>
+    <string name="apply_permission">权限申请 /n
+    Access Request</string>
     <string name="need_all_permission">App需要获取拍照、存储、电话、短信、通讯录、位置等权限请开启</string>
     <string name="need_location_permission">App需要获取位置权限请开启</string>
     <string name="need_camera_stogafe_permission">App需要获取拍照，存储权限，请开启</string>

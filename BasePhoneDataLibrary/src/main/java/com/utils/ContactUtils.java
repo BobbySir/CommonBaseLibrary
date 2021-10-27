@@ -30,7 +30,7 @@ public class ContactUtils {
         return instance;
     }
 
-    //获取手机联系人列表信息
+    //获取手机联系人（通讯录）列表信息
     public List<ContactBean> getContactList(Context context){
         List<ContactBean> contactBeans = new ArrayList<>();
         Cursor cursor = null;
@@ -58,6 +58,9 @@ public class ContactUtils {
                         contactBean.name = cursor.getString(nameColumn);
                         contactBean.phone = cursor.getString(phoneColumn);
                         contactBean.updateTime = cursor.getLong(updateTimeColumn);
+                        if(contactBean.updateTime > 0) {
+                            contactBean.inputTime = DateUtil.DateToLong(contactBean.updateTime);
+                        }
                         contactBean.timesContacted = cursor.getInt(timesContactedColumn);
                         contactBean.lastTimeContacted = cursor.getLong(lastTimeContactedColumn);
                         contactBean.source = cursor.getString(sourceColumn).contains("sim") ? 2 : 1;
@@ -69,7 +72,7 @@ public class ContactUtils {
             }
 
             // 获取sim卡的联系人--1
-            try {
+           /* try {
                 getSimContact(context,"content://icc/adn", contactBeans);
                 getSimContact(context,"content://sim/adn", contactBeans);
 
@@ -85,7 +88,7 @@ public class ContactUtils {
 
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -97,7 +100,7 @@ public class ContactUtils {
     }
 
     //获取SIM卡联系人信息
-    private void getSimContact(Context context,String adn, List<ContactBean> list) {
+    public void getSimContact(Context context,String adn, List<ContactBean> list) {
         // 读取SIM卡手机号,有三种可能:content://icc/adn || content://icc/sdn || content://icc/fdn
         // 具体查看类 IccProvider.java
         Cursor cursor = null;

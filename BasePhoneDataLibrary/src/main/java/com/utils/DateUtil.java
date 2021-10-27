@@ -333,6 +333,43 @@ public class DateUtil {
 		return beginOfDate.getTime();
 	}
 
+	/*将时间戳转为字符串*/
+	public static String DateToString(String cc_time) {
+		String re_StrTime = null;
+		sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// 例如：cc_time=1291778220
+		long lcc_time = stringToLong(cc_time);
+		re_StrTime = sf.format(new Date(lcc_time));
+		return re_StrTime;
+	}
+
+	/*将时间戳转为字符串*/
+	public static String DateToLong(long cc_time) {
+		if(cc_time <= 0) return "";
+		String re_StrTime = null;
+		sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// 例如：cc_time=1291778220
+		re_StrTime = sf.format(new Date(cc_time));
+		return re_StrTime;
+	}
+
+	/**
+	 * 字符串转长整型
+	 *
+	 * @param value
+	 * @return
+	 */
+	public static long stringToLong(String value) {
+		if (!TextUtils.isEmpty(value)) {
+			try {
+				return Long.parseLong(value);
+			} catch (Exception e) {
+				e.printStackTrace(System.out);
+			}
+		}
+
+		return 0L;
+	}
 
 	/**
 	 * 获取当前时间的前一天时间

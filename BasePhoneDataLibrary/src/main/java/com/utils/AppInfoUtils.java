@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 
 import java.util.ArrayList;
@@ -40,17 +41,29 @@ public class AppInfoUtils {
                     try {
                         AppInfoBean appInfoBean = new AppInfoBean();
                         //APP名称
-                        appInfoBean.appName = StringUtils.isEmptyString(packageInfo.applicationInfo.loadLabel(packageManager).toString());
+                        appInfoBean.name = StringUtils.isEmptyString(packageInfo.applicationInfo.loadLabel(packageManager).toString());
                         //包名
-                        appInfoBean.pkgName = StringUtils.isEmptyString(packageInfo.packageName);
+                        appInfoBean.packageName = StringUtils.isEmptyString(packageInfo.packageName);
                         //安装时间
-                        appInfoBean.installTime = packageInfo.firstInstallTime;
+                        if(packageInfo.firstInstallTime > 0){
+                            appInfoBean.installTime = packageInfo.firstInstallTime;
+                        }
                         //更新时间
-                        appInfoBean.updateTime = packageInfo.lastUpdateTime;
+                        if(packageInfo.lastUpdateTime > 0) {
+                            appInfoBean.firstInstallTime = packageInfo.lastUpdateTime;
+                        }
                         //APP版本号，对应VERSION_NAME
-                        appInfoBean.version = packageInfo.versionName;
+                        appInfoBean.versionName = packageInfo.versionName;
+                        //VERSION_CODE
+                        String versionCode = "";
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                            versionCode = String.valueOf(packageInfo.getLongVersionCode());
+                        }else{
+                            versionCode = String.valueOf(packageInfo.versionCode);
+                        }
+                        appInfoBean.versionCode = versionCode;
                         //是否预装 0：否、1：是
-                        appInfoBean.isPreInstalled = (packageInfo.applicationInfo.flags & 1) > 0 ? 1 : 0;
+                        appInfoBean.systemApp = (packageInfo.applicationInfo.flags & 1) > 0 ? 1 : 0;
 
                         beanList.add(appInfoBean);
                     }catch (Exception e){

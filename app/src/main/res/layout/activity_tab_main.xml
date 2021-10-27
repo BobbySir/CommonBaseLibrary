@@ -1,54 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TabMainActivity">
+    tools:context=".TabMainActivity"
+    android:fillViewport="true"
+    >
 
-    <Button
-        android:id="@+id/bt_album"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="相册"
-        android:background="@color/color_C7C7C7"
-        />
-    <Button
-        android:id="@+id/bt_app"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="所有APP安装信息"
-        android:background="@color/color_C7C7C7"
-        />
-    <Button
-        android:id="@+id/bt_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="所有短信信息"
-        android:background="@color/color_C7C7C7"
-        />
-    <Button
-        android:id="@+id/bt_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="所有联系人信息"
-        android:background="@color/color_C7C7C7"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp20"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="要获取对应信息请点击对应按钮 \n（To get the corresponding information, please click the corresponding button）"
+            android:textSize="@dimen/dp15"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp20"
+            />
 
-    <Button
-        android:id="@+id/bt_device"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="所有设备信息"
-        android:background="@color/color_C7C7C7"
-        />
+        <Button
+            android:id="@+id/bt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="短信信息（SMS messages）"
+            style="@style/CommonCompileButton"
+            />
+        <Button
+            android:id="@+id/bt_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通讯录信息(Address book）"
+            style="@style/CommonCompileButton"
+            />
 
-    <Button
-        android:id="@+id/bt_calen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="日历"
-        android:background="@color/color_C7C7C7"
-        />
-</LinearLayout>
+
+        <Button
+            android:id="@+id/bt_readCalls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通话记录信息(Call log information）"
+            style="@style/CommonCompileButton"
+            />
+
+        <Button
+            android:id="@+id/bt_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设备信息（device information）"
+            style="@style/CommonCompileButton"
+            />
+
+
+        <Button
+            android:id="@+id/bt_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APP安装信息（APP installation information）"
+            style="@style/CommonCompileButton"
+            />
+
+        <Button
+            android:id="@+id/bt_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相册（Photo album）"
+            style="@style/CommonCompileButton"
+            />
+
+
+        <Button
+            android:id="@+id/bt_calen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日历信息（calendar information）"
+            style="@style/CommonCompileButton"
+            />
+
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:textSize="@dimen/dp15"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingVertical="@dimen/dp20"
+            />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

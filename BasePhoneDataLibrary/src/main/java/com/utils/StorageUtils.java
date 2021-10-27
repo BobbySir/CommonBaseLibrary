@@ -252,4 +252,42 @@ public class StorageUtils {
             resultBuffer.append(suffix);
         return resultBuffer.toString();
     }
+
+
+
+    /**
+     * 获取内存总共空间
+     * @return
+     */
+    public static String getTotalMemory(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(mi);
+        return byteToMB(mi.totalMem);
+//        return byteToMB((long) Math.ceil(mi.totalMem));
+    }
+
+    /**
+     * 获取手机内部空间总大小
+     * @return
+     */
+    public static String getTotalInternalMemorySize(Context context) {
+        //获取内部存储根目录
+        File path = Environment.getDataDirectory();//Gets the Android data directory
+        //系统的空间描述类
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSizeLong();      //每个block 占字节数
+        long totalBlocks = stat.getBlockCountLong();   //block总数
+        return byteToMB(totalBlocks * blockSize);
+//        return Formatter.formatFileSize(context,totalBlocks * blockSize);
+    }
+
+    //将字节数转化为MB
+    private static String byteToMB(long size){
+        long kb = 1024;
+        long mb = kb*1024;
+
+        float f = (float) size/mb;
+        return String.format(f > 100 ?"%.0f MB":"%.1f MB",f);
+    }
 } 

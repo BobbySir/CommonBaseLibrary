@@ -32,14 +32,6 @@ public class CalenderDataBean {
 
     @Override
     public String toString() {
-        return "CalenderDataBean{" +
-                "eventId='" + eventId + '\'' +
-                ", eventTitle='" + eventTitle + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
-                ", week='" + week + '\'' +
-                '}';
+        return eventTitle + startTime + endTime + description + location +"\n";
     }
 }

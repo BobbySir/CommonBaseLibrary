@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/cl_begin</item>
+        <item name="colorPrimaryDark">@color/cl_begin</item>
+        <item name="colorAccent">@color/cl_begin</item>
+        <!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--        <item name="android:windowBackground">@color/color_323232</item>-->
+    </style>
+
+
+    <!-- 通用提交按钮 -->
+    <style name="CommonCompileButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:paddingLeft">@dimen/dp5</item>
+        <item name="android:paddingRight">@dimen/dp5</item>
+        <item name="android:background">@drawable/selector_button_login</item>
+        <item name="android:text">@string/finish</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/dp13</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:enabled">true</item>
+        <item name="android:layout_marginTop">@dimen/dp10</item>
+    </style>
+
     <!-- 协议 -->
     <style name="CommonAgreementCheckBox" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/cl_84</item>

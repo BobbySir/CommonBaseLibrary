@@ -234,7 +234,8 @@
     <string name="to_setting">去设置</string>
 
     <string name="apply_permission">权限申请</string>
-    <string name="need_all_permission">App需要获取拍照、存储、电话、短信、通讯录、位置等权限请开启</string>
+    <string name="need_all_permission">App需要获取拍照、存储、电话、短信、通讯录、位置等权限请开启 \n
+    App needs permission to take photos, storage, phone calls, text messages, address book, location, etc., please turn on</string>
     <string name="need_location_permission">App需要获取位置权限请开启</string>
     <string name="need_camera_stogafe_permission">App需要获取拍照，存储权限，请开启</string>
     <string name="need_camera_permission">App此功能需要拍照权限，请开启</string>

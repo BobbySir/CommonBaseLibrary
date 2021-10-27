@@ -18,15 +18,6 @@ public class AlbumBean implements Serializable {
 
     @Override
     public String toString() {
-        return "AlbumBean{" +
-                "name='" + name + '\'' +
-                ", model='" + model + '\'' +
-                ", make='" + make + '\'' +
-                ", time=" + time +
-                ", width=" + width +
-                ", height=" + height +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                '}';
+        return name + model + make + time + width + height + longitude + latitude +"\n";
     }
 }

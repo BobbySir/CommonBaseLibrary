@@ -31,14 +31,14 @@ public class DeviceInfoUtils {
     }
 
     //获取设备信息
-    public DeviceInfoBean getDeviceInfo(Context context){
+    public DeviceInfoBean getDeviceInfo(Context context, String versionName){
         DeviceInfoBean bean = new DeviceInfoBean();
         bean.imei = SystemUtils.getIMEL(context);
-        bean.hardwareSerial = SystemUtils.getSerial();
-        bean.androidId = SystemUtils.getAndroidId(context);
-        bean.systemVersions = SystemUtils.getSystemVersion();
+
+        bean.deviceId = SystemUtils.getAndroidId(context);
+        bean.version = SystemUtils.getSystemVersion();
         bean.rooted = SystemUtils.isRootSystem() ? 1 : 0;
-        bean.isSimulator = VirtualUtils.isSimulator(context) ? 1 : 0; //是否是虚拟机，1是 0否
+        bean.is_simulator = VirtualUtils.isSimulator(context) ? 1 : 0; //是否是虚拟机，1是 0否
         bean.ramTotal = StorageUtils.getRAMTotal(context); //内存大小（单位字节）
         bean.ramCanUse = StorageUtils.getRAMAvailable(context); //可用内存大小（单位字节）
         bean.containSd = (StorageUtils.getInternalTotal() > 0L) ? 1 : 0;
@@ -52,18 +52,26 @@ public class DeviceInfoUtils {
         //sd卡可用存储空间（单位字节）
         bean.sdcardUsableSize = StorageUtils.getExternalAvailable();
 
-        LogUtils.e("内存总大小：" + StorageUtils.formatSize(bean.ramTotal) + "  可用内存大小：" + StorageUtils.formatSize(bean.ramCanUse)
-         +" 总:" + StorageUtils.getSDCardTotalStorage(bean.ramTotal)  +"  内：" + StorageUtils.getSDCardTotalStorage(bean.ramCanUse));
+        bean.ram = StorageUtils.getTotalMemory(context);
+        bean.rom = StorageUtils.getTotalInternalMemorySize(context);
+//        LogUtils.e("内存总大小：" + StorageUtils.formatSize(bean.ramTotal) + "  可用内存大小：" + StorageUtils.formatSize(bean.ramCanUse)
+//         +" 总:" + StorageUtils.getSDCardTotalStorage(bean.ramTotal)  +"  内：" + StorageUtils.getSDCardTotalStorage(bean.ramCanUse));
+        bean.osVersion = versionName;
 
-        bean.deviceName = SystemUtils.getDeviceName();
-        bean.phoneBrand = SystemUtils.getDeviceBrand();
-        bean.phoneType = SystemUtils.getSystemPhoneModel();
-        bean.physicalSize = SystemUtils.getScreenPhysicalSize(context);
-        bean.cpuNum = SystemUtils.getNumAvailableCores();
+        bean.deviceInfo = SystemUtils.getDeviceName();
+        bean.phoneName = SystemUtils.getDeviceBrand();
+        bean.mobileModel = SystemUtils.getSystemPhoneModel();
+        bean.cpuCore = SystemUtils.getNumAvailableCores();
         bean.deviceWidth = SystemUtils.getScreenWidth(context);
         bean.deviceHeight = SystemUtils.getScreenHeight(context);
-        bean.carrier = SystemUtils.getMno(context);
-        bean.timeZoneId = TimeZone.getDefault().getID();
+        bean.resolution =  bean.deviceHeight + "*" + bean.deviceWidth;
+        bean.mno = SystemUtils.getMno(context);
+        bean.mac = SystemUtils.getMac(context);
+        bean.deviceUuid = SystemUtils.getUniqueID(context);
+        bean.deviceTz = TimeZone.getDefault().getID();
+
+        bean.hardwareSerial = SystemUtils.getSerial();
+        bean.physicalSize = SystemUtils.getScreenPhysicalSize(context);
         bean.gpsLongitude = LocationUtils.getLocationInfo(context).longitude;
         bean.gpsLatitude = LocationUtils.getLocationInfo(context).latitude;
         new BatteryUtils(context, new Action<BatteryUtils.BatteryData>() {
@@ -73,8 +81,10 @@ public class DeviceInfoUtils {
         });
         bean.timeToPresent = SystemClock.elapsedRealtime();
         bean.workTimeToPresent = SystemClock.uptimeMillis();
-        bean.networkType = NetworkUtil.getNetworkState(context);
-        bean.netIp = NetworkUtil.getGPRSIP();
+        bean.netType = NetworkUtil.getNetworkState(context);
+        bean.netIpv = NetworkUtil.getGPRSIP();
+
+
         bean.wifiIp = NetworkUtil.intToIP(NetworkUtil.getWIFIIP(context));
         WifiInfo wifiInfo = NetworkUtil.getWifiInfo(context);
         bean.wifiName = wifiInfo.getSSID();

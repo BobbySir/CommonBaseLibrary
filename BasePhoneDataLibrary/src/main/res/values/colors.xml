@@ -47,6 +47,10 @@
     <!--主色调-->
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+    <color name="cl_begin">#21ACBD</color>
+    <color name="cl_end">#DFEFCD</color>
+    <color name="cl_begin_50">#8021ACBD</color>
+    <color name="cl_end_50">#80DFEFCD</color>
 
 
     <!--  View背景颜色  -->
