@@ -35,7 +35,10 @@ public class AlbumUtils {
         List<AlbumBean> listData = new ArrayList();
         Cursor cursor = null;
         try {
-            cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, (String[])null, (String)null, (String[])null, (String)null);
+            cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    null, MediaStore.Images.Media.MIME_TYPE + "=? or "
+                            + MediaStore.Images.Media.MIME_TYPE + "=?",
+                    new String[]{"image/jpeg", "image/png"}, (String)null);
 
             while(true) {
                 String name;
