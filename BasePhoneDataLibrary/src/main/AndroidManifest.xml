@@ -2,38 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.basephonedatalibrary">
 
-    <!-- 读取日历权限 -->
+<!--    &lt;!&ndash; 读取日历权限 &ndash;&gt;
     <uses-permission android:name="android.permission.READ_CALENDAR" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- 访问手机硬件信息 -->
+    &lt;!&ndash; 访问手机硬件信息 &ndash;&gt;
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 读取Wifi状态 -->
+    &lt;!&ndash; 读取Wifi状态 &ndash;&gt;
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!-- 蓝牙权限 -->
+    &lt;!&ndash; 蓝牙权限 &ndash;&gt;
     <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <!--拍照-->
+    &lt;!&ndash;拍照&ndash;&gt;
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <!-- 写外部存储 -->
+    &lt;!&ndash; 写外部存储 &ndash;&gt;
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 读外部存储 -->
+    &lt;!&ndash; 读外部存储 &ndash;&gt;
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 访问手机联系人 -->
+    &lt;!&ndash; 访问手机联系人 &ndash;&gt;
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!-- 8.0请求安装外部包 -->
+    &lt;!&ndash; 8.0请求安装外部包 &ndash;&gt;
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-    <!-- 拨打电话 -->
+    &lt;!&ndash; 拨打电话 &ndash;&gt;
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <!-- 读取电话 -->
+    &lt;!&ndash; 读取电话 &ndash;&gt;
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-    <!-- 读取短信内容 -->
+    &lt;!&ndash; 读取短信内容 &ndash;&gt;
     <uses-permission android:name="android.permission.READ_SMS" />
 
-    <!-- 定位权限 -->
+    &lt;!&ndash; 定位权限 &ndash;&gt;
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
 </manifest>
