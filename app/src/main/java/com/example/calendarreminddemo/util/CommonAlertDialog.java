@@ -1,8 +1,9 @@
-package com.utils;
+package com.example.calendarreminddemo.util;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.Display;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.example.basephonedatalibrary.R;
+import com.example.calendarreminddemo.R;
 
 
 public class CommonAlertDialog {
@@ -54,7 +55,7 @@ public class CommonAlertDialog {
         btn_pos = (Button) view.findViewById(R.id.btn_pos);
         img_line = (ImageView) view.findViewById(R.id.img_line);
         setGone();
-        dialog = new Dialog(context, R.style.AlertDialogStyle);
+        dialog = new Dialog(context, R.style.Theme_AppCompat_Dialog);
         dialog.setContentView(view);
         lLayout_bg.setLayoutParams(new FrameLayout.LayoutParams((int) (display
                 .getWidth() * 0.72), FrameLayout.LayoutParams.WRAP_CONTENT));
@@ -217,7 +218,7 @@ public class CommonAlertDialog {
             btn_neg.setText(text);
         }
         if (color == -1) {
-            color = R.color.color_333333;
+            color = Color.BLACK;
         }
         btn_neg.setTextColor(ContextCompat.getColor(context, color));
 

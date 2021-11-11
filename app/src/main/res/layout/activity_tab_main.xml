@@ -31,14 +31,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="短信信息（SMS messages）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
         <Button
             android:id="@+id/bt_book"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="通讯录信息(Address book）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
 
 
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="通话记录信息(Call log information）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
 
         <Button
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设备信息（device information）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
 
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="APP安装信息（APP installation information）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
 
         <Button
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="相册（Photo album）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
 
 
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="日历信息（calendar information）"
-            style="@style/CommonCompileButton"
+            style="@style/DemoDemoButton"
             />
 
         <TextView

@@ -14,7 +14,7 @@ import java.util.List;
 import com.bean.CalenderDataBean;
 import com.utils.CalendarUtil;
 import com.utils.LogUtils;
-import com.utils.PermissionUtils;
+import com.example.calendarreminddemo.util.PermissionUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 //有权限
                 initCalendar();
             }else{
-                PermissionUtils.showDialog(this, getString(R.string.need_camera_stogafe_permission));
+                PermissionUtils.showDialog(this, "Please set the permissions required to allow the app");
             }
         }
     }

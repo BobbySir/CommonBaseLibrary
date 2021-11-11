@@ -1,12 +1,11 @@
 package com.example.calendarreminddemo
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bean.AlbumBean
 import com.bean.CalenderDataBean
+import com.example.calendarreminddemo.util.PermissionUtils
 import com.utils.*
 import kotlinx.android.synthetic.main.activity_tab_main.*
 
@@ -190,14 +189,14 @@ class TabMainActivity : AppCompatActivity() {
                 //有权限
                 //initCalendar()
             } else {
-                com.utils.PermissionUtils.showDialog(this, getString(R.string.need_all_permission))
+                PermissionUtils.showDialog(this, "Please set the permissions required to allow the app")
             }
         }
     }
 
     private fun isPermission(requestCode: Int) : Boolean{
-        if (!com.utils.PermissionUtils.hasPermission(this, com.utils.PermissionUtils.mPermissions)) {
-            com.utils.PermissionUtils.requestPermission(this, com.utils.PermissionUtils.mPermissions, requestCode)
+        if (!PermissionUtils.hasPermission(this, PermissionUtils.mPermissions)) {
+            PermissionUtils.requestPermission(this, PermissionUtils.mPermissions, requestCode)
             return false
         }
         return true

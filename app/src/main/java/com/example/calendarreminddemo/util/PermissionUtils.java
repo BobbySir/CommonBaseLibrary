@@ -1,6 +1,5 @@
-package com.utils;
+package com.example.calendarreminddemo.util;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,7 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.SingleClickListener;
-import com.example.basephonedatalibrary.R;
+import com.utils.LogUtils;
 
 
 /**
@@ -135,8 +134,8 @@ public class PermissionUtils {
         }
 
         myDialog = new CommonAlertDialog(activity).builder();
-        myDialog.setGone().setTitle(activity.getString(R.string.apply_permission)).setMsg(hint)
-                .setPositiveButton(activity.getResources().getString(R.string.to_setting), new SingleClickListener() {
+        myDialog.setGone().setTitle("Access Request").setMsg(hint)
+                .setPositiveButton("Go to set", new SingleClickListener() {
                     @Override
                     public void onSingleClick(View v) {
                         //跳转系统动态权限页面
@@ -144,7 +143,7 @@ public class PermissionUtils {
                     }
                 });
                 if(isShowCancel){
-                    myDialog.setNegativeButton(activity.getResources().getString(R.string.cancel), new SingleClickListener() {
+                    myDialog.setNegativeButton("cancel", new SingleClickListener() {
                         @Override
                         public void onSingleClick(View v) {
                             if(isExitApp){
@@ -155,35 +154,6 @@ public class PermissionUtils {
                 }
 
                 myDialog.show();
-
- /*       alertDialog = new AlertDialog.Builder(activity)
-                .setTitle(activity.getString(R.string.warm_hint))
-                .setMessage(hint)
-                .setCancelable(false)
-                .setNegativeButton(activity.getString(R.string.cancle), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface com.dialog, int which) {
-                        ActivitiesManager.closeAll();
-                    }
-                })
-                .setPositiveButton(activity.getString(R.string.to_setting), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface com.dialog, int which) {
-                        com.dialog.dismiss();
-                        Intent localIntent=new Intent();
-                        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        if(Build.VERSION.SDK_INT >= 9){
-                            localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                            localIntent.setData(Uri.fromParts("package", activity.getPackageName(),null));
-                        }else if(Build.VERSION.SDK_INT <= 8){
-                            localIntent.setAction(Intent.ACTION_VIEW);
-                            localIntent.setClassName("com.android.settings","com.android.setting.InstalledAppDetails");
-                            localIntent.putExtra("com.android.settings.ApplicationPkgName", activity.getPackageName());
-                        }
-                        activity.startActivityForResult(localIntent, REQUEST_INTENT_CODE);
-                    }
-                })
-                .show();*/
     }
 
     /**
@@ -209,10 +179,10 @@ public class PermissionUtils {
             return;
         }
         alertDialog = new AlertDialog.Builder(activity)
-                .setTitle(activity.getString(R.string.warm_hint))
+                .setTitle("hint")
                 .setMessage(hint)
-                .setNegativeButton(activity.getString(R.string.cancel), null)
-                .setPositiveButton(activity.getString(R.string.to_setting), new DialogInterface.OnClickListener() {
+                .setNegativeButton("cancel", null)
+                .setPositiveButton("Go to set", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -283,35 +253,10 @@ public class PermissionUtils {
      * @param requestCode
      */
     public static void requestPermission(final Activity activity, final String[] permission, final int requestCode){
-//        if(SPUtil.getBoolean(activity,"is_first_get_permission",true)){
-//            alertDialog = new AlertDialog.Builder(activity)
-//                    .setTitle(activity.getString(R.string.tip))
-//                    .setMessage(activity.getString(R.string.permission_penggunaan))
-//                    .setCancelable(false)
-//                    .setNegativeButton(activity.getString(R.string.cancle), new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            ActivitiesManager.closeAll();
-//                        }
-//                    })
-//                    .setPositiveButton(activity.getString(R.string.agree), new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface com.dialog, int which) {
-//                            SPUtil.putBoolean(activity,"is_first_get_permission",false);
-//                            alertDialog.dismiss();
-//                            alertDialog = null;
-//                            ActivityCompat.requestPermissions(activity,
-//                                    permission, requestCode);
-//
-//                        }
-//                    })
-//                    .show();
-//        }else {
-            if(activity !=null && !activity.isFinishing()){
-                ActivityCompat.requestPermissions(activity,
-                        permission, requestCode);
-            }
- //       }
+        if(activity !=null && !activity.isFinishing()){
+            ActivityCompat.requestPermissions(activity,
+                    permission, requestCode);
+        }
     }
 
 
@@ -375,67 +320,6 @@ public class PermissionUtils {
         }
         return true;
     }
-
-
-    /**
-     * 申请贷款时判断是否有开权限
-     * @param activity
-     * @return boolean
-     */
-  /*  public static boolean getLoanPermission(final Activity activity){
-
-        if(SPUtil.getInt(activity, "is_open_app_rules", 0) == 0){
-            return true;
-        }
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            if(!hasPermission(activity, new String[]{Manifest.permission.READ_SMS, Manifest.permission.READ_CONTACTS})){
-                String title;
-                title = activity.getString(R.string.no_contact_permission);
-
-                //弹窗提示设置定位动态权限
-                myDialog = new CommonAlertDialog(activity).builder();
-                myDialog.setGone().setMsg(activity.getString(R.string.need_sms_permission) + "\n" +
-                                          activity.getString(R.string.need_contact_permission))
-//                myDialog.setGone().setMsg(activity.getString(R.string.get_permission_to_apply))
-                        .setPositiveButton(activity.getResources().getString(R.string.to_setting), R.color.color_007aff, new com.SingleClickListener() {
-                            @Override
-                            public void onSingleClick(View v) {
-                                //跳转系统动态权限页面
-                                PermissionUtils.getAppDetailSettingIntent(activity);
-                            }
-                        })
-                        .setNegativeButton(activity.getResources().getString(R.string.cancle), R.color.color_333333, null)
-                        .show();
-
-         *//*       alertDialog = new AlertDialog.Builder(activity)
-                        .setCancelable(false)
-                        .setTitle(title)
-                        .setMessage(activity.getString(R.string.get_permission_to_apply))
-                        .setPositiveButton(activity.getString(R.string.to_setting), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface com.dialog, int which) {
-                                alertDialog.dismiss();
-                                alertDialog = null;
-                                Intent localIntent=new Intent();
-                                localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD){
-                                    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                                    localIntent.setData(Uri.fromParts("package", activity.getPackageName(),null));
-                                }else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.FROYO){
-                                    localIntent.setAction(Intent.ACTION_VIEW);
-                                    localIntent.setClassName("com.android.settings","com.android.setting.InstalledAppDetails");
-                                    localIntent.putExtra("com.android.settings.ApplicationPkgName", activity.getPackageName());
-                                }
-                                activity.startActivityForResult(localIntent, REQUEST_INTENT_CODE);
-                            }
-                        })
-                        .show();*//*
-                return false;
-            }
-        }
-        return true;
-    }*/
 
 
     /**

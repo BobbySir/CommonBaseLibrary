@@ -20,7 +20,7 @@ import android.widget.Button;
 import com.example.calendarreminddemo.photo.QueryHandler;
 
 import com.utils.LogUtils;
-import com.utils.PermissionUtils;
+import com.example.calendarreminddemo.util.PermissionUtils;
 
 public class PhotosActivity extends AppCompatActivity {
     private String LOGTAG = "out";
@@ -152,7 +152,7 @@ public class PhotosActivity extends AppCompatActivity {
                 //有权限
                 initCalendar();
             }else{
-                PermissionUtils.showDialog(this, getString(R.string.need_camera_stogafe_permission));
+                PermissionUtils.showDialog(this, "Please set the permissions required to allow the app");
             }
         }
     }
