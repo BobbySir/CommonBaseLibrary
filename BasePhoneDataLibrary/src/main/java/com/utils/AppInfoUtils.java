@@ -41,16 +41,16 @@ public class AppInfoUtils {
                     try {
                         AppInfoBean appInfoBean = new AppInfoBean();
                         //APP名称
-                        appInfoBean.name = StringUtils.isEmptyString(packageInfo.applicationInfo.loadLabel(packageManager).toString());
+                        appInfoBean.appName = StringUtils.isEmptyString(packageInfo.applicationInfo.loadLabel(packageManager).toString());
                         //包名
                         appInfoBean.packageName = StringUtils.isEmptyString(packageInfo.packageName);
                         //安装时间
                         if(packageInfo.firstInstallTime > 0){
-                            appInfoBean.installTime = packageInfo.firstInstallTime;
+                            appInfoBean.installTime = DateUtil.DateToLong(packageInfo.firstInstallTime);
                         }
                         //更新时间
                         if(packageInfo.lastUpdateTime > 0) {
-                            appInfoBean.firstInstallTime = packageInfo.lastUpdateTime;
+                            appInfoBean.firstInstallTime = DateUtil.DateToLong(packageInfo.lastUpdateTime);
                         }
                         //APP版本号，对应VERSION_NAME
                         appInfoBean.versionName = packageInfo.versionName;
