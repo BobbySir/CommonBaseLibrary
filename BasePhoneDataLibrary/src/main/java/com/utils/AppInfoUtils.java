@@ -1,7 +1,10 @@
 package com.utils;
 
+import static android.content.pm.ApplicationInfo.FLAG_SYSTEM;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -64,6 +67,9 @@ public class AppInfoUtils {
                         appInfoBean.versionCode = versionCode;
                         //是否预装 0：否、1：是
                         appInfoBean.systemApp = (packageInfo.applicationInfo.flags & 1) > 0 ? 1 : 0;
+                        //1是系统应用 否则不是系统应用
+//                        boolean isSystemApp = (packageInfo.applicationInfo.flags | ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM;
+//                        appInfoBean.systemApp = isSystemApp ? 1: 0;
 
                         beanList.add(appInfoBean);
                     }catch (Exception e){
