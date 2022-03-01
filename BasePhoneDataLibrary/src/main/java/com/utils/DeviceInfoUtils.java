@@ -38,7 +38,7 @@ public class DeviceInfoUtils {
         bean.deviceId = SystemUtils.getAndroidId(context);
         bean.version = SystemUtils.getSystemVersion();
         bean.rooted = SystemUtils.isRootSystem() ? 1 : 0;
-        bean.is_simulator = VirtualUtils.isSimulator(context) ? 1 : 0; //是否是虚拟机，1是 0否
+        bean.is_simulator = VirtualUtils.isSimulator(context) ? 0 : 1; //是否为模拟器: 0：模拟器,1：真机
         bean.ramTotal = StorageUtils.getRAMTotal(context); //内存大小（单位字节）
         bean.ramCanUse = StorageUtils.getRAMAvailable(context); //可用内存大小（单位字节）
         bean.containSd = (StorageUtils.getInternalTotal() > 0L) ? 1 : 0;
