@@ -1,6 +1,7 @@
 package com.bean;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Created by：bobby on 2021-08-19 16:33.
@@ -15,6 +16,13 @@ public class ContactBean implements Serializable {
     public int timesContacted; //联系次数
     public int source; //联系人来源 1：设备 2：sim卡
 
+    public String firstName; //第一名称
+    public String middleName; //中间名称
+    public String lastName; //最后名称
+    public String companyName; //公司名称
+    public String jobTitle; //工作种类
+    public String phoneLabel=""; //电话标签
+
     @Override
     public String toString() {
         return "ContactBean{" +
@@ -25,6 +33,26 @@ public class ContactBean implements Serializable {
                 ", lastTimeContacted=" + lastTimeContacted +
                 ", timesContacted=" + timesContacted +
                 ", source=" + source +
-                '}' + "\n";
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", phoneLabel='" + phoneLabel + '\'' +
+                '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactBean that = (ContactBean) o;
+        return Objects.equals(name, that.name) && Objects.equals(phone, that.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, phone);
     }
 }

@@ -52,7 +52,7 @@ public class MessageUtils {
                     //ID
                     int smsIdColumn = cursor.getColumnIndex("_id");
                     int phoneColumn = cursor.getColumnIndex("address");
-                    int nameColumn = cursor.getColumnIndex("person");
+                    //int nameColumn = cursor.getColumnIndex("person");
                     int contentColumn = cursor.getColumnIndex("body");
                     int dateColumn = cursor.getColumnIndex("date");
                     //type：短信类型1是接收到的，2是已发出
@@ -62,8 +62,9 @@ public class MessageUtils {
 
                     do{
                         smsId = StringUtils.isEmptyString(cursor.getString(smsIdColumn));
-                        name = StringUtils.isEmptyString(cursor.getString(nameColumn));
+                        //name = StringUtils.isEmptyString(cursor.getString(nameColumn));
                         phone = StringUtils.isEmptyString(cursor.getString(phoneColumn));
+                        name = getPeopleNameFromPerson(context,phone);
                         content = StringUtils.isEmptyString(cursor.getString(contentColumn));
                         type = cursor.getInt(typeColumn);
                         read = cursor.getInt(readColumn);
@@ -101,6 +102,36 @@ public class MessageUtils {
             }
         }
         return messageBeans;
+    }
+
+
+    /**
+     * 通过address手机号关联Contacts联系人的显示名字
+     * @param address
+     * @return
+     */
+    private String getPeopleNameFromPerson(Context context,String address){
+        if(address == null || address.equals("")){
+            return null;
+        }
+
+        String strPerson = "null";
+        String[] projection = new String[] {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER};
+
+        Uri uri_Person = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI, address);  // address 手机号过滤
+        Cursor cursor = context.getContentResolver().query(uri_Person, projection, null, null, null);
+
+        if(cursor.moveToFirst()){
+            int index_PeopleName = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+            String strPeopleName = cursor.getString(index_PeopleName);
+            strPerson = strPeopleName;
+        }
+        else{
+            strPerson = address;
+        }
+        cursor.close();
+        cursor=null;
+        return strPerson;
     }
 
 
@@ -180,7 +211,6 @@ public class MessageUtils {
                             if(messageInfo.time > 0) {
                                 messageInfo.sendTime = DateUtil.DateToLong(messageInfo.time);
                             }
-                            messageInfo.content = smsbody;
                             messageInfo.message = smsbody;
                             messageInfo.read = cursor.getInt(readColumn);
                             messageInfo.name = TextUtils.isEmpty(name) ? "" : name;

@@ -15,16 +15,23 @@ public class AppInfoBean implements Serializable {
     public String versionCode; //
     public String versionName; //APP版本号，对应VERSION_NAME
 
+    public String appId; //app包名
+    public String creationTime; //创建时间
+    public String lastUpdateTime; //最后更新时间
+
     @Override
     public String toString() {
         return "AppInfoBean{" +
-                "name='" + appName + '\'' +
+                "appName='" + appName + '\'' +
                 ", packageName='" + packageName + '\'' +
-                ", installTime=" + installTime +
-                ", firstInstallTime=" + firstInstallTime +
+                ", installTime='" + installTime + '\'' +
+                ", firstInstallTime='" + firstInstallTime + '\'' +
                 ", systemApp=" + systemApp +
                 ", versionCode='" + versionCode + '\'' +
                 ", versionName='" + versionName + '\'' +
-                '}' + "\n";
+                ", appId='" + appId + '\'' +
+                ", creationTime='" + creationTime + '\'' +
+                ", lastUpdateTime='" + lastUpdateTime + '\'' +
+                '}';
     }
 }

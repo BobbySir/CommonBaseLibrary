@@ -34,14 +34,24 @@ public class DeviceInfoUtils {
     public DeviceInfoBean getDeviceInfo(Context context, String versionName){
         DeviceInfoBean bean = new DeviceInfoBean();
         bean.imei = SystemUtils.getIMEL(context);
+        bean.osType = VirtualUtils.isHarmonyOs();
+        bean.osChannel = VirtualUtils.isHarmonyOs();
+        bean.country = SystemUtils.getSimCountry(context);
+
+        String curCpuFreq = SystemUtils.getCurCpuFreq();
+        curCpuFreq = curCpuFreq.length() != 0 ? curCpuFreq : "0";
+        bean.cpuSpeed = curCpuFreq;
+
 
         bean.deviceId = SystemUtils.getAndroidId(context);
+        bean.androidId = SystemUtils.getAndroidId(context);
         bean.version = SystemUtils.getSystemVersion();
         bean.rooted = SystemUtils.isRootSystem() ? 1 : 0;
-        bean.is_simulator = VirtualUtils.isSimulator(context) ? 0 : 1; //是否为模拟器: 0：模拟器,1：真机
+        bean.is_simulator = VirtualUtils.isSimulator(context) ? 0 : 1; //是否是虚拟机，0是 1否
         bean.ramTotal = StorageUtils.getRAMTotal(context); //内存大小（单位字节）
         bean.ramCanUse = StorageUtils.getRAMAvailable(context); //可用内存大小（单位字节）
         bean.containSd = (StorageUtils.getInternalTotal() > 0L) ? 1 : 0;
+
 
         //手机自身存储空间大小（单位字节）
         bean.storageSize = StorageUtils.getInternalTotal();
@@ -59,6 +69,7 @@ public class DeviceInfoUtils {
         bean.osVersion = versionName;
 
         bean.deviceInfo = SystemUtils.getDeviceName();
+        bean.brand = SystemUtils.getDeviceName();
         bean.phoneName = SystemUtils.getDeviceBrand();
         bean.mobileModel = SystemUtils.getSystemPhoneModel();
         bean.cpuCore = SystemUtils.getNumAvailableCores();
@@ -66,6 +77,7 @@ public class DeviceInfoUtils {
         bean.deviceHeight = SystemUtils.getScreenHeight(context);
         bean.resolution =  bean.deviceHeight + "*" + bean.deviceWidth;
         bean.mno = SystemUtils.getMno(context);
+        bean.simSerialNumber = SystemUtils.getSimSerialNumber(context);
         bean.mac = SystemUtils.getMac(context);
         bean.deviceUuid = SystemUtils.getUniqueID(context);
         bean.deviceTz = TimeZone.getDefault().getID();

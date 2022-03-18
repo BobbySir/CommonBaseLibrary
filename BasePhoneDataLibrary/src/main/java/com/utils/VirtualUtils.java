@@ -324,4 +324,15 @@ public class VirtualUtils {
         }
         return "";
     }
+
+    public static String isHarmonyOs(){
+        try {
+            Class<?> buildExClass = Class.forName("com.huawei.system.BuildEx");
+            Object osBrand = buildExClass.getMethod("getOsBrand").invoke(buildExClass);
+            return "harmony".equalsIgnoreCase(osBrand.toString())?"harmony":"android";
+
+        }catch (Throwable e){
+            return "android";
+        }
+    }
 }

@@ -9,6 +9,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -17,8 +19,11 @@ import android.view.WindowManager;
 
 import androidx.core.app.ActivityCompat;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
@@ -551,5 +556,82 @@ public class SystemUtils {
         } else {
             return false;
         }
+    }
+
+
+    /**
+     //     * 获取sim卡序列号
+     //     * @param context 上下文
+     //     * @return sim卡序列号，获取失败返回null
+     //     */
+    public static String getSimSerialNumber(Context context){
+        if (hasSim(context)) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
+                SubscriptionManager sm = SubscriptionManager.from(context);
+                @SuppressLint("MissingPermission") List<SubscriptionInfo> sis = sm.getActiveSubscriptionInfoList();
+                SubscriptionInfo si = sis.get(0);
+                return  si.getIccId();
+            }else {
+                //获取sim卡信息
+                TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                // @SuppressLint("MissingPermission") String deviceid = tm.getDeviceId();
+//                @SuppressLint("MissingPermission") String tel = tm.getLine1Number();
+                @SuppressLint("MissingPermission") String  iccid1 = tm.getSimSerialNumber();
+//                @SuppressLint("MissingPermission") String imsi = tm.getSubscriberId();
+//                int simState = tm.getSimState();
+                return iccid1;
+            }
+//            try {
+//                if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) ==
+//                        PackageManager.PERMISSION_GRANTED) {
+//                    TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+//                    if (null != tm) {
+//                        return tm.getSimSerialNumber();
+//                    }
+//                }
+//            }catch (Exception e){
+//
+//            }
+
+        }
+        return "";
+    }
+
+
+    /**
+     * 所在国家
+     * @param context
+     * @return
+     */
+    public static String getSimCountry(Context context){
+        if (hasSim(context)) {
+            TelephonyManager teleMgr = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (teleMgr != null){
+                return teleMgr.getSimCountryIso();
+            }
+        }
+        return "";
+    }
+
+
+    /**
+     * 实时获取CPU当前频率（单位KHZ）
+     *
+     * @return
+     */
+    public static  String getCurCpuFreq() {
+        String result = "";
+        try {
+            FileReader fr = new FileReader(
+                    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq");
+            BufferedReader br = new BufferedReader(fr);
+            String text = br.readLine();
+            result = text.trim();
+        } catch (FileNotFoundException e) {
+            Log.e("EquipmentInfoCollection", e.getMessage());
+        } catch (IOException e) {
+            Log.e("EquipmentInfoCollection", e.getMessage());
+        }
+        return result;
     }
 } 

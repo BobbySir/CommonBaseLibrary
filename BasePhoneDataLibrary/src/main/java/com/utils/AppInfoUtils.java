@@ -47,19 +47,23 @@ public class AppInfoUtils {
                         appInfoBean.appName = StringUtils.isEmptyString(packageInfo.applicationInfo.loadLabel(packageManager).toString());
                         //包名
                         appInfoBean.packageName = StringUtils.isEmptyString(packageInfo.packageName);
+                        appInfoBean.appId = StringUtils.isEmptyString(packageInfo.packageName);
                         //安装时间
                         if(packageInfo.firstInstallTime > 0){
                             appInfoBean.installTime = DateUtil.DateToLong(packageInfo.firstInstallTime);
+                            appInfoBean.creationTime = DateUtil.DateToLong(packageInfo.firstInstallTime);
+                            appInfoBean.firstInstallTime = DateUtil.DateToLong(packageInfo.firstInstallTime);
                         }
                         //更新时间
                         if(packageInfo.lastUpdateTime > 0) {
-                            appInfoBean.firstInstallTime = DateUtil.DateToLong(packageInfo.lastUpdateTime);
+//                            appInfoBean.firstInstallTime = DateUtil.DateToLong(packageInfo.lastUpdateTime);
+                            appInfoBean.lastUpdateTime = DateUtil.DateToLong(packageInfo.lastUpdateTime);
                         }
                         //APP版本号，对应VERSION_NAME
                         appInfoBean.versionName = packageInfo.versionName;
                         //VERSION_CODE
                         String versionCode = "";
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                             versionCode = String.valueOf(packageInfo.getLongVersionCode());
                         }else{
                             versionCode = String.valueOf(packageInfo.versionCode);
@@ -67,9 +71,6 @@ public class AppInfoUtils {
                         appInfoBean.versionCode = versionCode;
                         //是否预装 0：否、1：是
                         appInfoBean.systemApp = (packageInfo.applicationInfo.flags & 1) > 0 ? 1 : 0;
-                        //1是系统应用 否则不是系统应用
-//                        boolean isSystemApp = (packageInfo.applicationInfo.flags | ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM;
-//                        appInfoBean.systemApp = isSystemApp ? 1: 0;
 
                         beanList.add(appInfoBean);
                     }catch (Exception e){

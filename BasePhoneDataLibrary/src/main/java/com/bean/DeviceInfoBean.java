@@ -9,6 +9,13 @@ import java.util.List;
  * Describe：设备信息
  */
 public class DeviceInfoBean implements Serializable {
+    public String idForAdvertising=""; //广告Id
+    public String androidId;  //AndroidId
+    public String country; //所在国家
+    public String cpuSpeed;  //内核数量
+    public String brand;    //手机品牌
+    public String simSerialNumber;  //sim号
+
     public long ramTotal;      //内存大小（单位字节）
     public long ramCanUse;    //内存可用空间（单位字节）
 

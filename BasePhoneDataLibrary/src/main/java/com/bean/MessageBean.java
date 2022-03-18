@@ -13,9 +13,9 @@ public class MessageBean implements Serializable {
     public int read;        //是否已读 0：未读、1：已读
     public long time;       //短信时间（13位毫秒）
     public String sendTime;   //短信发送接收时间（13位毫秒）
-    public String content;  //短信内容
     public String message;  //短信内容
     public String  smsId;   //短信ID
+    public String  address;   //对方地址
 
 
     public MessageBean(String name, String phone, int type, int read, long time,String sendTime, String content, String smsId) {
@@ -25,9 +25,9 @@ public class MessageBean implements Serializable {
         this.read = read;
         this.time = time;
         this.sendTime = sendTime;
-        this.content = content;
         this.message = content;
         this.smsId = smsId;
+        this.address = phone;
     }
 
     public MessageBean() {
@@ -42,7 +42,6 @@ public class MessageBean implements Serializable {
                 ", read=" + read +
                 ", time=" + time +
                 ", sendTime=" + sendTime +
-                ", content='" + content + '\'' +
                 ", message='" + message + '\'' +
                 ", smsId='" + smsId + '\'' +
                 '}' + "\n";
