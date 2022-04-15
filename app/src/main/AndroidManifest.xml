@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.calendarreminddemo">
 
-   <!-- <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" /> &lt;!&ndash; 读外部存储 &ndash;&gt;
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" /> <!-- 读外部存储 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -16,10 +18,10 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    &lt;!&ndash; 使用网络 &ndash;&gt;
+    <!-- 使用网络 -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    &lt;!&ndash; 读取网络状态 &ndash;&gt;
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <!-- 读取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
 

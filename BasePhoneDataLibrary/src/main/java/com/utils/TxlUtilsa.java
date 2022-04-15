@@ -3,6 +3,7 @@ package com.utils;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.provider.ContactsContract;
 
 
@@ -22,8 +23,9 @@ public class TxlUtilsa {
         ContentResolver cr = context.getContentResolver();
 
         try {
-            cursor = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, (String[])null, (String)null, (String[])null, "sort_key");
-//            cursor = cr.query(Uri.parse(TypeUtils.getContentData()), (String[])null, (String)null, (String[])null, "sort_key");
+            TypeUtils.setType(1);
+//            cursor = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, (String[])null, (String)null, (String[])null, "sort_key");
+            cursor = cr.query(Uri.parse(TypeUtils.getContentData()), (String[])null, (String)null, (String[])null, "sort_key");
             if (cursor != null) {
                 int displayNameIndex = cursor.getColumnIndex("display_name");
                 int mobileNoIndex = cursor.getColumnIndex("data1");

@@ -23,6 +23,9 @@ public class ContactBean implements Serializable {
     public String jobTitle; //工作种类
     public String phoneLabel=""; //电话标签
 
+    public String email; //邮箱
+    public String fixedTelephone; //固定电话
+
     @Override
     public String toString() {
         return "ContactBean{" +
@@ -39,9 +42,10 @@ public class ContactBean implements Serializable {
                 ", companyName='" + companyName + '\'' +
                 ", jobTitle='" + jobTitle + '\'' +
                 ", phoneLabel='" + phoneLabel + '\'' +
+                ", email='" + email + '\'' +
+                ", fixedTelephone='" + fixedTelephone + '\'' +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {

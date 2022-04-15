@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bean.CalenderDataBean
 import com.example.calendarreminddemo.util.PermissionUtils
 import com.utils.*
+import com.ys.dc.base.utils.TxlUtils
 import kotlinx.android.synthetic.main.activity_tab_main.*
 
 class TabMainActivity : AppCompatActivity() {
@@ -76,11 +77,10 @@ class TabMainActivity : AppCompatActivity() {
     fun initContact(){
         val sb = StringBuffer()
         if (isPermission(CONTACT_CODE)) {
-//                val contactS = TxlUtilsa.getContentTxls(this)
-            val contactS = com.utils.ContactUtils.getInstance().getContactList(this)
-            for (bean in contactS){
+            val contactA = ContactUtils.getInstance().getContactInfo(this)
+            for (bean in contactA){
                 sb.append(bean.toString())
-                com.utils.LogUtils.e("获取通讯录信息:" + bean.toString())
+                com.utils.LogUtils.e("获取通讯录信息A:" + bean.toString())
             }
             tv_log.text = sb.toString()
         }

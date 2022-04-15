@@ -1,5 +1,6 @@
 package com.example.calendarreminddemo.util;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,16 +33,16 @@ public class PermissionUtils {
     public static final int REQUEST_INTENT_CODE = 400;
 
     public static String[] mPermissions = new String[]{
-         /*   Manifest.permission.CAMERA,
+            Manifest.permission.CAMERA,
             Manifest.permission.READ_CALENDAR,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
-//            Manifest.permission.READ_CALL_LOG,
+            Manifest.permission.READ_CALL_LOG,
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.READ_SMS,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.READ_PHONE_STATE,*/
+            Manifest.permission.READ_PHONE_STATE,
 
     };
 

@@ -217,10 +217,13 @@ public class CommonAlertDialog {
         if (!TextUtils.isEmpty(text)) {
             btn_neg.setText(text);
         }
-        if (color == -1) {
-            color = Color.BLACK;
+//        if (color == -1) {
+//            color = Color.BLACK;
+//        }
+        if(color > -1){
+            btn_neg.setTextColor(context.getResources().getColor(color));
         }
-        btn_neg.setTextColor(ContextCompat.getColor(context, color));
+//        btn_neg.setTextColor(ContextCompat.getColor(context, color));
 
         btn_neg.setOnClickListener(new View.OnClickListener() {
             @Override

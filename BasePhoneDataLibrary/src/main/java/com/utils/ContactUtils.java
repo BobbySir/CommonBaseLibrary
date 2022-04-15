@@ -1,10 +1,14 @@
 package com.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Contacts;
 import android.provider.ContactsContract;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 
 
@@ -22,6 +26,7 @@ import org.json.JSONException;
  */
 public class ContactUtils {
     private static ContactUtils instance;
+    private static String TAG;
 
     public static ContactUtils getInstance() {
         if (instance == null) {
@@ -32,123 +37,6 @@ public class ContactUtils {
             }
         }
         return instance;
-    }
-
-    //获取手机联系人（通讯录）列表信息
-    public List<ContactBean> getContactList(Context context) {
-        List<ContactBean> contactBeans = new ArrayList<>();
-        Cursor cursor = null;
-        try {
-            cursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                    null, null, null, null);
-            if (cursor != null) {
-                int nameColumn;     //姓名
-                int phoneColumn; //手机号码
-                int updateTimeColumn; //更新时间（13位毫秒）
-                int timesContactedColumn; //联系次数
-                int lastTimeContactedColumn; //与联系人最后联系时间（13位毫秒）
-                int sourceColumn; //联系人来源 1：设备 2：sim卡
-
-                nameColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
-                phoneColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-                updateTimeColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_LAST_UPDATED_TIMESTAMP);
-                timesContactedColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED);
-                lastTimeContactedColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.LAST_TIME_CONTACTED);
-                sourceColumn = cursor.getColumnIndex("account_type");
-
-                while (cursor.moveToNext() && cursor.getCount() > 0) {
-                    try {
-                        ContactBean contactBean = new ContactBean();
-                        contactBean.name = cursor.getString(nameColumn);
-                        contactBean.phone = cursor.getString(phoneColumn);
-                        contactBean.updateTime = cursor.getLong(updateTimeColumn);
-                        if (contactBean.updateTime > 0) {
-                            contactBean.inputTime = DateUtil.DateToLong(contactBean.updateTime);
-                        }
-                        contactBean.timesContacted = cursor.getInt(timesContactedColumn);
-                        contactBean.lastTimeContacted = cursor.getLong(lastTimeContactedColumn);
-                        contactBean.source = cursor.getString(sourceColumn).contains("sim") ? 2 : 1;
-                        contactBeans.add(contactBean);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            // 获取sim卡的联系人--1
-           /* try {
-                getSimContact(context,"content://icc/adn", contactBeans);
-                getSimContact(context,"content://sim/adn", contactBeans);
-
-                getSimContact(context,"content://icc/adn/subId/#", contactBeans);
-
-                getSimContact(context,"content://icc/sdn", contactBeans);
-
-                getSimContact(context,"content://icc/sdn/subId/#", contactBeans);
-
-                getSimContact(context,"content://icc/fdn", contactBeans);
-
-                getSimContact(context,"content://icc/fdn/subId/#", contactBeans);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-        return contactBeans;
-    }
-
-    //获取SIM卡联系人信息
-    public void getSimContact(Context context, String adn, List<ContactBean> list) {
-        // 读取SIM卡手机号,有三种可能:content://icc/adn || content://icc/sdn || content://icc/fdn
-        // 具体查看类 IccProvider.java
-        Cursor cursor = null;
-        try {
-            Uri uri = Uri.parse(adn);
-            LogUtils.e(uri.toString());
-
-            cursor = context.getContentResolver().query(uri, null,
-                    null, null, null);
-            if (cursor != null) {
-                while (cursor.moveToNext() && cursor.getCount() > 0) {
-                    // 取得联系人名字
-                    int nameIndex = cursor.getColumnIndex(Contacts.People.NAME);
-                    // 取得电话号码
-                    int numberIndex = cursor.getColumnIndex(Contacts.People.NUMBER);
-                    //与联系人最后联系时间（13位毫秒
-                    //  int lastTimeContactedIndex = cursor.getColumnIndex(Contacts.People.LAST_TIME_CONTACTED);
-                    //联系次数
-//                    int timesContactedIndex = cursor.getColumnIndex(Contacts.People.TIMES_CONTACTED);
-
-                    String phone = cursor.getString(numberIndex);
-                    String name = cursor.getString(nameIndex);
-//                    int timesContacted = cursor.getInt(timesContactedIndex);
-                    // long lastTimeContacted = cursor.getLong(lastTimeContactedIndex);
-
-                    ContactBean simCardTemp = new ContactBean();
-                    simCardTemp.phone = phone;
-                    simCardTemp.name = name;
-//                    simCardTemp.timesContacted = timesContacted;
-//                    simCardTemp.lastTimeContacted = lastTimeContacted;
-                    simCardTemp.source = 2;
-
-                    if (!list.contains(simCardTemp)) {
-                        list.add(simCardTemp);
-                    }
-                }
-                cursor.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
     }
 
 
@@ -180,7 +68,7 @@ public class ContactUtils {
                     if (contactBean.updateTime > 0) {
                         contactBean.inputTime = DateUtil.DateToLong(contactBean.updateTime);
                     }
-                    LogUtils.e(contactBean.inputTime + "---联系人：" + mimetype);
+//                    LogUtils.e(contactBean.inputTime + "---联系人：" + mimetype);
                     // 获得通讯录中每个联系人的ID
                     // 获得通讯录中联系人的名字
                     if (ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE.equals(mimetype)) {
@@ -278,14 +166,15 @@ public class ContactUtils {
 //                            jsonObject.put("department", department);
                         }
                     }
-                    LogUtils.e("通讯：" + contactBean.name + "  ---  " + contactBean.phone);
-                } while (cursor.moveToNext());
+//                    LogUtils.e("通讯：" + contactBean.name + "  ---  " + contactBean.phone);
+                } while (cursor.moveToNext() && cursor.getCount() > 0);
             }
         }
         cursor.close();
 
         LinkedHashSet<ContactBean> hashSet = new LinkedHashSet<>(list);
         ArrayList<ContactBean> repeatList = new ArrayList<>(hashSet);
+
 //        System.out.println(listWithoutDuplicates);
         List<ContactBean> list2 = new ArrayList<>();
         if (repeatList.size() > 0) {
@@ -298,11 +187,171 @@ public class ContactUtils {
 
         List<ContactBean> contactList = getContactList(context);
         LinkedHashSet<ContactBean> contactHashSet = new LinkedHashSet<>(contactList);
+
         List<ContactBean> contactRepeatList = new ArrayList<>(contactHashSet);
         list2.addAll(contactRepeatList);
+
         LinkedHashSet<ContactBean> listHashSet = new LinkedHashSet<>(list2);
         List<ContactBean> listRepeatList = new ArrayList<>(listHashSet);
 
         return listRepeatList;
     }
+
+
+    //获取手机联系人（通讯录）列表信息
+    private List<ContactBean> getContactList(Context context) {
+        List<ContactBean> contactBeans = new ArrayList<>();
+        Cursor cursor = null;
+        try {
+            cursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null, null, null, null);
+            if (cursor != null) {
+                int nameColumn;     //姓名
+                int phoneColumn; //手机号码
+                int updateTimeColumn; //更新时间（13位毫秒）
+                int timesContactedColumn; //联系次数
+                int lastTimeContactedColumn; //与联系人最后联系时间（13位毫秒）
+                int sourceColumn; //联系人来源 1：设备 2：sim卡
+
+                nameColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                phoneColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                updateTimeColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_LAST_UPDATED_TIMESTAMP);
+                timesContactedColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED);
+                lastTimeContactedColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.LAST_TIME_CONTACTED);
+                sourceColumn = cursor.getColumnIndex("account_type");
+
+                while (cursor.moveToNext() && cursor.getCount() > 0) {
+                    try {
+                        ContactBean contactBean = new ContactBean();
+                        contactBean.name = cursor.getString(nameColumn);
+                        contactBean.phone = cursor.getString(phoneColumn);
+                        contactBean.updateTime = cursor.getLong(updateTimeColumn);
+                        if (contactBean.updateTime > 0) {
+                            contactBean.inputTime = DateUtil.DateToLong(contactBean.updateTime);
+                        }
+                        contactBean.timesContacted = cursor.getInt(timesContactedColumn);
+                        contactBean.lastTimeContacted = cursor.getLong(lastTimeContactedColumn);
+                        contactBean.source = cursor.getString(sourceColumn).contains("sim") ? 2 : 1;
+                        contactBeans.add(contactBean);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            // 获取sim卡的联系人
+            try {
+                List<ContactBean> simContacts = getSimAllInfo(context);
+                if(!EmptyUtil.isEmpty(simContacts)) contactBeans.addAll(simContacts);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return contactBeans;
+    }
+
+
+
+    /**
+     * 获取所有SIM 卡信息
+     * @param context
+     */
+    public List<ContactBean> getSimAllInfo(Context context){
+        List<ContactBean> simContacts = new ArrayList<>();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1){
+            SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
+            @SuppressLint("MissingPermission") List<SubscriptionInfo> mSubcriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
+            List<String> subIds = new ArrayList<>();
+            List<String> slotIds = new ArrayList<>();
+            if(!EmptyUtil.isEmpty(mSubcriptionInfos)){
+                for(int i = 0 ; i < mSubcriptionInfos.size() ; i ++){
+                    SubscriptionInfo info = mSubcriptionInfos.get(i);
+                    if(info != null){
+                        subIds.add(info.getSubscriptionId() + "");
+                        slotIds.add((info.getSimSlotIndex() + 1) + "");
+                    }
+//                    LogUtils.e(TAG , "info : " + info.toString());
+                }
+            }
+            if(!EmptyUtil.isEmpty(subIds)){
+                for(int i = 0 ; i < subIds.size() ; i ++){
+                    List<ContactBean> tempSimQuery = getSimQuery(context , "content://icc/adn/subId/" + subIds.get(i) , slotIds.get(i));//这里就是获取双卡的联系人详情
+                    if(!EmptyUtil.isEmpty(tempSimQuery)) simContacts.addAll(tempSimQuery);
+                }
+            }
+        }else{
+            List<ContactBean> tempSimQuery = simContacts = getSimQuery(context , "content://icc/adn", "");//这里就是获取双卡的联系人详情
+            if(!EmptyUtil.isEmpty(tempSimQuery)) simContacts.addAll(tempSimQuery);
+        }
+        return simContacts;
+    }
+
+    public static final String[] PHONES_PROJECTION = new String[]
+            {
+                    ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER,
+                    ContactsContract.CommonDataKinds.Photo.PHOTO_ID,
+                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID
+            };
+
+    private List<ContactBean> getSimQuery(Context mContext , String mUri) {
+        return getSimQuery(mContext,mUri,"");
+    }
+
+    private List<ContactBean> getSimQuery(Context mContext , String mUri , String soltID) {
+        //SIM的provider是IccProvider，IccProvider的Uri是content://icc/adn
+        List<ContactBean> simContacts = new ArrayList<>();
+        LogUtils.e(TAG , "mUri : " + mUri);
+        Cursor cursor = null;
+        try {
+            Uri uri = Uri.parse(mUri);
+            cursor = mContext.getContentResolver().query(uri, null,
+                    null, null, null);
+            if(cursor != null){
+                while (cursor.moveToNext() && cursor.getCount() > 0) {
+                    String contactName = cursor.getString(cursor.getColumnIndex("name"));//获取双卡中联系人的名字
+                    String telNumber = cursor.getString(cursor.getColumnIndex("number"));//获取双卡中联系人的电话号码
+                    String email = cursor.getString(cursor.getColumnIndex("emails"));//获取双卡中联系人的邮箱
+                    String fixedTelephone = cursor.getString(cursor.getColumnIndex("anrs"));//获取双卡中联系人的固定电话
+
+                    ContactBean simCardTemp = new ContactBean();
+                    simCardTemp.phone = telNumber;
+                    simCardTemp.name = contactName;
+                    simCardTemp.email = email;
+                    simCardTemp.fixedTelephone = fixedTelephone;
+                    simCardTemp.source = 2;
+
+                    if (!simContacts.contains(simCardTemp)) {
+                        simContacts.add(simCardTemp);
+                    }
+
+                  /*  String contactSimID = soltID;//双卡中该联系人为与卡1还是卡2
+                    String keys[] = cursor.getColumnNames();
+                    LogUtils.e(TAG , "开始 ===========================================");
+                    //获取Kyc的名称
+                    for(String key : keys){
+                        LogUtils.e(TAG , "key : " + key + " , value : " + cursor.getString(cursor.getColumnIndex(key)));
+                    }
+                    LogUtils.e(TAG , "结束 ===========================================");*/
+                    ///LogUtils.e(TAG, "名字：" + contactName + " 电话:" + telNumber + "  邮箱：" + email  +"  固定电话:" + fixedTelephone);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(cursor != null){
+                cursor.close();
+            }
+        }
+        return simContacts;
+    }
+
+
 } 
