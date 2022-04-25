@@ -569,8 +569,10 @@ public class SystemUtils {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
                 SubscriptionManager sm = SubscriptionManager.from(context);
                 @SuppressLint("MissingPermission") List<SubscriptionInfo> sis = sm.getActiveSubscriptionInfoList();
-                SubscriptionInfo si = sis.get(0);
-                return  si.getIccId();
+                if(!EmptyUtil.isEmpty(sis)){
+                    SubscriptionInfo si = sis.get(0);
+                    return  si.getIccId();
+                }
             }else {
                 //获取sim卡信息
                 TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);

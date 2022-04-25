@@ -288,8 +288,8 @@ public class PermissionUtils {
 
     /**
      * 请求动态权限回调
-     * 有权限: PackageManager.PERMISSION_GRANTED
-     * 无权限: PackageManager.PERMISSION_DENIED
+     * 有权限: PackageManager.PERMISSION_GRANTED = 0
+     * 无权限: PackageManager.PERMISSION_DENIED  = -1
      */
     public static boolean hasPermission(Context context, String[] permission){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
