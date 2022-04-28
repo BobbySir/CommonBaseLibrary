@@ -1,8 +1,10 @@
 package com.example.calendarreminddemo
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.telephony.TelephonyManager
 import androidx.appcompat.app.AppCompatActivity
 import com.bean.CalenderDataBean
 import com.example.calendarreminddemo.util.PermissionUtils
@@ -11,6 +13,7 @@ import com.ys.dc.base.utils.TxlUtils
 import kotlinx.android.synthetic.main.activity_tab_main.*
 
 class TabMainActivity : AppCompatActivity() {
+    val SIM_CODE = 100
     val MESS_CODE = 101
     val CONTACT_CODE = 102
     val CALLS_CODE = 103
@@ -26,6 +29,11 @@ class TabMainActivity : AppCompatActivity() {
     }
 
     fun initData(){
+        //sim信息
+        bt_sim.setOnClickListener {
+            getSMSInfo()
+        }
+
         //短信
         bt_message.setOnClickListener {
             initSMSMess()
@@ -59,6 +67,19 @@ class TabMainActivity : AppCompatActivity() {
         //日历
         bt_calen.setOnClickListener {
             initCalendar()
+        }
+    }
+
+    //获取sim 卡信息
+    fun getSMSInfo(){
+        if (isPermission(SIM_CODE)) {
+            val sb = StringBuffer()
+            val sims = SimUtils.getInstance().getPhones(this)
+            for (sim in sims) {
+                LogUtils.e("获取的sim==" + sim.toString())
+                sb.append(sim.toString())
+            }
+            tv_log.text = sb.toString()
         }
     }
 
@@ -151,6 +172,9 @@ class TabMainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode){
+                SIM_CODE ->{
+                    if(isPermission(SIM_CODE))getSMSInfo()
+                }
                 MESS_CODE ->{
                     if(isPermission(MESS_CODE))initSMSMess()
                 }

@@ -27,6 +27,14 @@
             />
 
         <Button
+            android:id="@+id/bt_sim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sim卡信息（SIM messages）"
+            style="@style/DemoDemoButton"
+            />
+
+        <Button
             android:id="@+id/bt_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
