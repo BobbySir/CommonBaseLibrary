@@ -265,30 +265,34 @@ public class ContactUtils {
      */
     public List<ContactBean> getSimAllInfo(Context context){
         List<ContactBean> simContacts = new ArrayList<>();
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1){
-            SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
-            @SuppressLint("MissingPermission") List<SubscriptionInfo> mSubcriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
-            List<String> subIds = new ArrayList<>();
-            List<String> slotIds = new ArrayList<>();
-            if(!EmptyUtil.isEmpty(mSubcriptionInfos)){
-                for(int i = 0 ; i < mSubcriptionInfos.size() ; i ++){
-                    SubscriptionInfo info = mSubcriptionInfos.get(i);
-                    if(info != null){
-                        subIds.add(info.getSubscriptionId() + "");
-                        slotIds.add((info.getSimSlotIndex() + 1) + "");
+        try {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1){
+                SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
+                @SuppressLint("MissingPermission") List<SubscriptionInfo> mSubcriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
+                List<String> subIds = new ArrayList<>();
+                List<String> slotIds = new ArrayList<>();
+                if(!EmptyUtil.isEmpty(mSubcriptionInfos)){
+                    for(int i = 0 ; i < mSubcriptionInfos.size() ; i ++){
+                        SubscriptionInfo info = mSubcriptionInfos.get(i);
+                        if(info != null){
+                            subIds.add(info.getSubscriptionId() + "");
+                            slotIds.add((info.getSimSlotIndex() + 1) + "");
+                        }
+    //                    LogUtils.e(TAG , "info : " + info.toString());
                     }
-//                    LogUtils.e(TAG , "info : " + info.toString());
                 }
-            }
-            if(!EmptyUtil.isEmpty(subIds)){
-                for(int i = 0 ; i < subIds.size() ; i ++){
-                    List<ContactBean> tempSimQuery = getSimQuery(context , "content://icc/adn/subId/" + subIds.get(i) , slotIds.get(i));//这里就是获取双卡的联系人详情
-                    if(!EmptyUtil.isEmpty(tempSimQuery)) simContacts.addAll(tempSimQuery);
+                if(!EmptyUtil.isEmpty(subIds)){
+                    for(int i = 0 ; i < subIds.size() ; i ++){
+                        List<ContactBean> tempSimQuery = getSimQuery(context , "content://icc/adn/subId/" + subIds.get(i) , slotIds.get(i));//这里就是获取双卡的联系人详情
+                        if(!EmptyUtil.isEmpty(tempSimQuery)) simContacts.addAll(tempSimQuery);
+                    }
                 }
+            }else{
+                List<ContactBean> tempSimQuery = simContacts = getSimQuery(context , "content://icc/adn", "");//这里就是获取双卡的联系人详情
+                if(!EmptyUtil.isEmpty(tempSimQuery)) simContacts.addAll(tempSimQuery);
             }
-        }else{
-            List<ContactBean> tempSimQuery = simContacts = getSimQuery(context , "content://icc/adn", "");//这里就是获取双卡的联系人详情
-            if(!EmptyUtil.isEmpty(tempSimQuery)) simContacts.addAll(tempSimQuery);
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return simContacts;
     }

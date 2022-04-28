@@ -38,56 +38,59 @@ public class SimUtils {
     @SuppressLint("MissingPermission")
     public List<SimBean> getPhones(Context context) {
         List<SimBean> simBeanList = new ArrayList<>();
+        try {
+            //判断是否有sim卡
+            if (hasSimCard(context)) {
+                int defaultSubId = -1;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
+                    SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
 
-        //判断是否有sim卡
-        if (hasSimCard(context)) {
-            int defaultSubId = -1;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
-                SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
-
-                //获取默认通话的subId
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    defaultSubId = SubscriptionManager.getDefaultVoiceSubscriptionId();
-                }
-
-                //如果没有读取手机状态的权限就不往下走
-                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return simBeanList;
-                }
-                List<SubscriptionInfo> mSubcriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
-                if(!EmptyUtil.isEmpty(mSubcriptionInfos)){
-                    for(int i = 0;i < mSubcriptionInfos.size(); i ++){
-                        SubscriptionInfo info = mSubcriptionInfos.get(i);
-                        SimBean sb = new SimBean();
-                        sb.phone = info.getNumber();
-
-                        //如果有两张SIM卡
-                        if(mSubcriptionInfos.size() > 1){
-                            //获取默认通话的subId 7.0手机才有
-                            if(defaultSubId > -1){
-                                if(defaultSubId == info.getSubscriptionId()){
-                                    sb.isDefaultVoicePhone = true;
-                                }
-                            }else{
-                                //取第0个为默认
-                                if(i == 0){
-                                    sb.isDefaultVoicePhone = true;
-                                }
-                            }
-                        }else{
-                            sb.isDefaultVoicePhone = true;
-                        }
-                        simBeanList.add(sb);
+                    //获取默认通话的subId
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                        defaultSubId = SubscriptionManager.getDefaultVoiceSubscriptionId();
                     }
+
+                    //如果没有读取手机状态的权限就不往下走
+                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                        return simBeanList;
+                    }
+                    List<SubscriptionInfo> mSubcriptionInfos = subscriptionManager.getActiveSubscriptionInfoList();
+                    if (!EmptyUtil.isEmpty(mSubcriptionInfos)) {
+                        for (int i = 0; i < mSubcriptionInfos.size(); i++) {
+                            SubscriptionInfo info = mSubcriptionInfos.get(i);
+                            SimBean sb = new SimBean();
+                            sb.phone = info.getNumber();
+
+                            //如果有两张SIM卡
+                            if (mSubcriptionInfos.size() > 1) {
+                                //获取默认通话的subId 7.0手机才有
+                                if (defaultSubId > -1) {
+                                    if (defaultSubId == info.getSubscriptionId()) {
+                                        sb.isDefaultVoicePhone = true;
+                                    }
+                                } else {
+                                    //取第0个为默认
+                                    if (i == 0) {
+                                        sb.isDefaultVoicePhone = true;
+                                    }
+                                }
+                            } else {
+                                sb.isDefaultVoicePhone = true;
+                            }
+                            simBeanList.add(sb);
+                        }
+                    }
+                } else {
+                    SimBean sb = new SimBean();
+                    //少于5.0的话
+                    TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                    sb.isDefaultVoicePhone = true;
+                    sb.phone = tm.getLine1Number();
+                    simBeanList.add(sb);
                 }
-            }else{
-                SimBean sb = new SimBean();
-                //少于5.0的话
-                TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-                sb.isDefaultVoicePhone = true;
-                sb.phone = tm.getLine1Number();
-                simBeanList.add(sb);
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return simBeanList;
     }
