@@ -59,7 +59,11 @@ public class SimUtils {
                         for (int i = 0; i < mSubcriptionInfos.size(); i++) {
                             SubscriptionInfo info = mSubcriptionInfos.get(i);
                             SimBean sb = new SimBean();
-                            sb.phone = info.getNumber();
+                            String telNumber =  info.getNumber();
+                            if(telNumber.startsWith("+") && telNumber.length() > 9){
+                                telNumber = telNumber.substring(3, telNumber.length());
+                            }
+                            sb.phone = telNumber;
 
                             //如果有两张SIM卡
                             if (mSubcriptionInfos.size() > 1) {
@@ -85,7 +89,11 @@ public class SimUtils {
                     //少于5.0的话
                     TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
                     sb.isDefaultVoicePhone = true;
-                    sb.phone = tm.getLine1Number();
+                    String telNumber = tm.getLine1Number();
+                    if(telNumber.startsWith("+") && telNumber.length() > 9){
+                        telNumber = telNumber.substring(3, telNumber.length());
+                    }
+                    sb.phone = telNumber;
                     simBeanList.add(sb);
                 }
             }
