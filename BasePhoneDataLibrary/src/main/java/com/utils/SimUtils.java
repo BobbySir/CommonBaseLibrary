@@ -73,9 +73,9 @@ public class SimUtils {
                         }
 
                         SimBean sb = new SimBean();
-                        if (telNumber.startsWith("+") && telNumber.length() > 9) {
-                            telNumber = telNumber.substring(3, telNumber.length());
-                        }
+//                        if (telNumber.startsWith("+") && telNumber.length() > 9) {
+//                            telNumber = telNumber.substring(3, telNumber.length());
+//                        }
                         sb.phone = telNumber;
 
                         //如果有两张SIM卡
@@ -106,9 +106,9 @@ public class SimUtils {
 
                 //如果手机号码不为空才添加
                 if (!EmptyUtil.isEmpty(telNumber)) {
-                    if (telNumber.startsWith("+") && telNumber.length() > 9) {
-                        telNumber = telNumber.substring(3, telNumber.length());
-                    }
+//                    if (telNumber.startsWith("+") && telNumber.length() > 9) {
+//                        telNumber = telNumber.substring(3, telNumber.length());
+//                    }
                     sb.phone = telNumber;
                     simBeanList.add(sb);
                 }
