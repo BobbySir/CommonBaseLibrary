@@ -68,7 +68,7 @@ public class SimUtils {
                         String telNumber = info.getNumber();
 
                         //如果手机号码为空跳出当前循环
-                        if (EmptyUtil.isEmpty(telNumber)) {
+                        if (EmptyUtil.isEmpty(telNumber) || telNumber.length() < 8) {
                             continue;
                         }
 
@@ -105,7 +105,7 @@ public class SimUtils {
                 String telNumber = tm.getLine1Number();
 
                 //如果手机号码不为空才添加
-                if (!EmptyUtil.isEmpty(telNumber)) {
+                if (!EmptyUtil.isEmpty(telNumber) && telNumber.length() > 8) {
 //                    if (telNumber.startsWith("+") && telNumber.length() > 9) {
 //                        telNumber = telNumber.substring(3, telNumber.length());
 //                    }
