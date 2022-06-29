@@ -68,7 +68,7 @@ public class SimUtils {
                         String telNumber = info.getNumber();
 
                         //如果手机号码为空跳出当前循环
-                        if (EmptyUtil.isEmpty(telNumber) || telNumber.length() < 8) {
+                        if (EmptyUtil.isEmpty(telNumber) || telNumber.length() < 9) {
                             continue;
                         }
 
