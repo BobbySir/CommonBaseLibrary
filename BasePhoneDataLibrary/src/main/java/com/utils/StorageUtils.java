@@ -288,6 +288,7 @@ public class StorageUtils {
         long mb = kb*1024;
 
         float f = (float) size/mb;
-        return String.format(f > 100 ?"%.0f MB":"%.1f MB",f);
+//        return String.format(f > 100 ?"%.0f MB":"%.1f MB",f);
+        return String.format(f > 100 ?"%.0f":"%.1f",f);
     }
 } 
