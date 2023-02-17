@@ -103,7 +103,13 @@ public class SystemUtils {
         String meid = "gsm.mtk.meid";
 
         String sb = "";
-        if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+        String permission = "";
+        if(Build.VERSION.SDK_INT >=  Build.VERSION_CODES.R){
+            permission = Manifest.permission.READ_PHONE_NUMBERS;
+        }else{
+            permission = Manifest.permission.READ_PHONE_STATE;
+        }
+        if (ActivityCompat.checkSelfPermission(mContext, permission) == PackageManager.PERMISSION_GRANTED) {
             if (mContext != null) {
                 //如果>9.0
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -156,12 +162,18 @@ public class SystemUtils {
     @SuppressLint({"MissingPermission"})
     private static String getNewDeviceId(final Context mContext,final int type) {
         String did = "";
+        String permission = "";
+        if(Build.VERSION.SDK_INT >=  Build.VERSION_CODES.R){
+            permission = Manifest.permission.READ_PHONE_NUMBERS;
+        }else{
+            permission = Manifest.permission.READ_PHONE_STATE;
+        }
         if (mContext != null) {
             TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
             try {
                 if (tm != null) {
                     Method method = tm.getClass().getMethod("getDeviceId", int.class);
-                    if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(mContext, permission) == PackageManager.PERMISSION_GRANTED) {
                         //如果>9.0
                         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                             //did = tm.getImei(type);

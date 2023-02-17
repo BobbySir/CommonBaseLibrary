@@ -53,7 +53,7 @@ public class SimUtils {
 
                 String permission;
                 //如果没有读取手机状态的权限就不往下走
-                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     permission = Manifest.permission.READ_PHONE_NUMBERS;
                 }else{
                     permission = Manifest.permission.READ_PHONE_STATE;

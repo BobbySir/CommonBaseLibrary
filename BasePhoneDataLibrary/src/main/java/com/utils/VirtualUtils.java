@@ -315,7 +315,13 @@ public class VirtualUtils {
      */
     @SuppressLint("MissingPermission")
     private static String getSimNumber(Context context){
-        if(ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) ==
+        String permission = "";
+        if(Build.VERSION.SDK_INT >=  Build.VERSION_CODES.R){
+            permission = Manifest.permission.READ_PHONE_NUMBERS;
+        }else{
+            permission = Manifest.permission.READ_PHONE_STATE;
+        }
+        if(ContextCompat.checkSelfPermission(context, permission) ==
                 PackageManager.PERMISSION_GRANTED) {
             TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             if (null != tm) {
